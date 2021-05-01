@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import createIngredientsArray from "../../components/helpers/createIngredientsArray";
-import createMeasuresArray from "../../components/helpers/createMeasuresArray";
+import createIngredientsArray from "../../helpers/createIngredientsArray";
+import createMeasuresArray from "../../helpers/createMeasuresArray";
 
 function RecipeDetailsPage() {
     const [recipeData, setRecipeData] = useState(null);
     const [name, setName] = useState("");
-    const [country, setCountry] = useState("");
+    const [origin, setOrigin] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState(null);
     const [ingredients, setIngredients] = useState([]);
@@ -19,17 +19,14 @@ function RecipeDetailsPage() {
         async function fetchData() {
             try {
                 const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-                console.log("details", result.data.meals[0]);
                 setRecipeData(result.data.meals[0]);
                 setName(result.data.meals[0].strMeal);
                 setCategory(result.data.meals[0].strCategory);
-                setCountry(result.data.meals[0].strArea);
+                setOrigin(result.data.meals[0].strArea);
                 setImage(result.data.meals[0].strMealThumb);
                 setIngredients(createIngredientsArray(result.data.meals[0]));
                 setMeasures(createMeasuresArray(result.data.meals[0]));
                 setInstruction(result.data.meals[0].strInstructions);
-
-
             } catch (e) {
                 console.error(e);
             }
@@ -46,7 +43,7 @@ function RecipeDetailsPage() {
                 <h1>{name}</h1>
                 <section>
                     <div>Category: {category}</div>
-                    <div>Country: {country}</div>
+                    <div>Origin: {origin}</div>
                 </section>
 
                 <img src={image} alt="recipe"/>
