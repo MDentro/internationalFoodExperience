@@ -1,26 +1,30 @@
 import React from 'react';
+import DisplayFoundResult from "../displayFoundResult/DisplayFoundResult";
 
 function SearchByUserInput({ meals }) {
 
     return (
-        <div>
+        <>
+            <div>
+                {meals ? <h1>Search results:</h1> : <h1></h1>}
 
-            {meals ? <h1>Search results:</h1> : <h1></h1> }
+                {meals &&
+                <>
+                    <div>
+                        {meals.map((meal) => {
 
-
-            {meals && meals.map((meal, index) => {
-                return <>
-                    <div key={index}>
-                    <img
-                        alt="meal impression"
-                        src={meal.strMealThumb}
-                    />
-                    <p>{meal.idMeal}</p>
-                    <p>{meal.strMeal}</p>
+                            return <DisplayFoundResult
+                                key={meal.idMeal}
+                                image={meal.strMealThumb}
+                                idMeal={meal.idMeal}
+                                recipeTitle={meal.strMeal}
+                            />
+                        })};
                     </div>
                 </>
-            })}
-        </div>
+                }
+            </div>
+        </>
     );
 }
 
