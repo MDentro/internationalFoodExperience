@@ -7,6 +7,7 @@ test ("only add ingredient to array when not null or empty string", () => {
         strIngredient2: "carrot",
         strIngredient3: "",
         strIngredient4: null,
+        strIngredient5: " ",
     }
 
     const result = createIngredientsArray(meals);
@@ -22,6 +23,7 @@ test("if array contains empty string or null do not add it to the array", () => 
     const meals = {
         strIngredient1: "",
         strIngredient2: null,
+        strIngredient3: " ",
     }
 
     const result = createIngredientsArray(meals);

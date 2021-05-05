@@ -43,7 +43,7 @@ function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, se
             setEndpoint(endpoint);
 
             handleClear();
-            errors.search = "";
+            // errors.search = "";
         }
     }
 
@@ -84,6 +84,8 @@ function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, se
                         onKeyUp={keyPressCheck}
                         placeholder="Search for a recipe"
                     />
+                    {console.log("wat is errors?", errors)}
+                    {console.log("wat is errorsSearch?", errors.search)}
                     {errors.search && <p className="error">Search input is obligated.</p>}
 
                 <SubmitButton>
