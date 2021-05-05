@@ -53,7 +53,7 @@ function App() {
         <>
             <h1>International Food Experience</h1>
             {/* <RecipeDetailsPage/>*/}
-            {/*<HomePage />*/}
+            <HomePage />
 
             <RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals}/>
             {errorCategory && (
