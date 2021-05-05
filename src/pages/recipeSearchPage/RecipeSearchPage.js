@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import SearchByUserInput from "../../components/searchByUserInput/SearchByUserInput";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
 
-function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals }) {
+function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, setEndpoint }) {
     const [searchInput, setSearchInput] = useState("");
     const [searchBy, setSearchBy] = useState("");
 
@@ -12,7 +12,17 @@ function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals }) 
     function onSubmit() {
         setSearchInputHandler(searchInput);
         setSearchByHandler(searchBy);
+
+        let endpoint = "";
+        if (searchBy === "category") {
+           endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchInput}`;
+        } else if (searchBy === "origin") {
+           endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${searchInput}`;
+        }
+        setEndpoint(endpoint);
+
         handleClear();
+        // errors.search = "";
     }
 
     const handleClear = () => {
@@ -23,6 +33,15 @@ function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals }) 
         if (e.keyCode === 13) {
             setSearchInputHandler(searchInput);
             setSearchByHandler(searchBy);
+
+            let endpoint = "";
+            if (searchBy === "category") {
+                endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchInput}`;
+            } else if (searchBy === "origin") {
+                endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${searchInput}`;
+            }
+            setEndpoint(endpoint);
+
             handleClear();
             errors.search = "";
         }
