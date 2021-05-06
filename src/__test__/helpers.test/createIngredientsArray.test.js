@@ -16,7 +16,6 @@ test ("only add ingredient to array when not null or empty string", () => {
         "green red lentils",
         "carrot"
     ]);
-
 })
 
 test("if array contains empty string or null do not add it to the array", () => {
@@ -24,6 +23,28 @@ test("if array contains empty string or null do not add it to the array", () => 
         strIngredient1: "",
         strIngredient2: null,
         strIngredient3: " ",
+    }
+
+    const result = createIngredientsArray(meals);
+
+    expect(result).toEqual([]);
+})
+
+test("if there is no strIngredient in the object return empty array", () => {
+    const meals = {
+        title: "This is a title",
+        origin: " ",
+        category: null,
+        strIngredient1: null,
+    }
+
+    const result = createIngredientsArray(meals);
+
+    expect(result).toEqual([]);
+})
+
+test("if there is nothing the object return empty array", () => {
+    const meals = {
     }
 
     const result = createIngredientsArray(meals);

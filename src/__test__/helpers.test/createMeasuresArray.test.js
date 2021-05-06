@@ -1,4 +1,5 @@
 import createMeasuresArray from "../../helpers/createMeasuresArray";
+import createIngredientsArray from "../../helpers/createIngredientsArray";
 
 
 test("only add measures to array when not null or empty string", () => {
@@ -23,6 +24,28 @@ test("if measure array contains empty string or null do not add it to the array"
         strMeasure1: "",
         strMeasure2: null,
         strMeasure3: " ",
+    }
+
+    const result = createMeasuresArray(meals);
+
+    expect(result).toEqual([]);
+})
+
+test("if there is no strIngredient in the object return empty array", () => {
+    const meals = {
+        title: "This is a title",
+        origin: " ",
+        category: null,
+        strMeasure1: null,
+    }
+
+    const result = createMeasuresArray(meals);
+
+    expect(result).toEqual([]);
+})
+
+test("if there is nothing the object return empty array", () => {
+    const meals = {
     }
 
     const result = createMeasuresArray(meals);
