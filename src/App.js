@@ -5,6 +5,7 @@ import RecipeDetailsPage from "./pages/recipeDetailsPage/RecipeDetailsPage";
 import HomePage from "./pages/homePage/HomePage";
 import RecipeSearchPage from "./pages/recipeSearchPage/RecipeSearchPage";
 import DisplayExistingSearchOptions from "./components/displayExistingSearchOptions/DisplayExistingSearchOptions";
+import RandomRecipeSearchPage from "./pages/randomRecipeSearchPage/RandomRecipeSearchPage";
 
 function App() {
     const [meals, setMeals] = useState([]);
@@ -43,13 +44,16 @@ function App() {
         <>
 
             <h1>International Food Experience</h1>
-            <RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>
-            {error &&  (
-                <span className="wrong-input-error">
-                            This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions
-                    chosenSearch={chosenSearch}/>}
-                       </span>
-            )}
+
+            <RandomRecipeSearchPage />
+
+            {/*<RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>*/}
+            {/*{error &&  (*/}
+            {/*    <span className="wrong-input-error">*/}
+            {/*                This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions*/}
+            {/*        chosenSearch={chosenSearch}/>}*/}
+            {/*           </span>*/}
+            {/*)}*/}
         </>
     );
 }

@@ -31,7 +31,7 @@ test("if measure array contains empty string or null do not add it to the array"
     expect(result).toEqual([]);
 })
 
-test("if there is no strIngredient in the object return empty array", () => {
+test("if there is no strMeasure in the object return empty array", () => {
     const meals = {
         title: "This is a title",
         origin: " ",
