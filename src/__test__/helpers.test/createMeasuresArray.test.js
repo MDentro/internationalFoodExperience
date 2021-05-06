@@ -37,6 +37,7 @@ test("if there is no strIngredient in the object return empty array", () => {
         origin: " ",
         category: null,
         strMeasure1: null,
+        strIngredient1: "green red lentils",
     }
 
     const result = createMeasuresArray(meals);
