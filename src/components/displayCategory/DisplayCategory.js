@@ -20,21 +20,21 @@ function DisplayCategory() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const result = await axios.get(buildEndpoint("categoryList", null, null))
-                setCategoryData(result.data.categories);
-                setVegetarianCategoryImage(result.data.categories[11].strCategoryThumb);
-                setVegetarianNameCategory(result.data.categories[11].strCategory);
-                setPastaCategoryImage(result.data.categories[5].strCategoryThumb);
-                setPastaNameCategory(result.data.categories[5].strCategory);
-                setDessertCategoryImage(result.data.categories[2].strCategoryThumb);
-                setDessertNameCategory(result.data.categories[2].strCategory);
-                setChickenCategoryImage(result.data.categories[1].strCategoryThumb);
-                setChickenNameCategory(result.data.categories[1].strCategory);
-                setSeafoodCategoryImage(result.data.categories[7].strCategoryThumb);
-                setSeafoodNameCategory(result.data.categories[7].strCategory);
-                setMiscellaneousCategoryImage(result.data.categories[4].strCategoryThumb);
-                setMiscellaneousNameCategory(result.data.categories[4].strCategory);
-                console.log(result.data.categories[11]);
+                const { data : { categories }}  = await axios.get(buildEndpoint("categoryList", null, null))
+                setCategoryData(categories);
+                setVegetarianCategoryImage(categories[11].strCategoryThumb);
+                setVegetarianNameCategory(categories[11].strCategory);
+                setPastaCategoryImage(categories[5].strCategoryThumb);
+                setPastaNameCategory(categories[5].strCategory);
+                setDessertCategoryImage(categories[2].strCategoryThumb);
+                setDessertNameCategory(categories[2].strCategory);
+                setChickenCategoryImage(categories[1].strCategoryThumb);
+                setChickenNameCategory(categories[1].strCategory);
+                setSeafoodCategoryImage(categories[7].strCategoryThumb);
+                setSeafoodNameCategory(categories[7].strCategory);
+                setMiscellaneousCategoryImage(categories[4].strCategoryThumb);
+                setMiscellaneousNameCategory(categories[4].strCategory);
+                console.log(categories[0]);
             } catch (e) {
                 console.error(e);
             }

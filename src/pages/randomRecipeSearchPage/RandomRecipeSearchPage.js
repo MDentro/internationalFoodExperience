@@ -11,10 +11,10 @@ function RandomRecipeSearchPage({ toggleErrorMessage, errorMessage }) {
         async function fetchData() {
             toggleErrorMessage(false);
             try {
-                const result = await axios.get(buildEndpoint("random", null, null));
-                console.log("details random", result.data.meals[0]);
-                console.log("details random", result.data.meals[0].idMeal);
-                setId(result.data.meals[0].idMeal);
+                const { data : { meals }} = await axios.get(buildEndpoint("random", null, null));
+                console.log("details random", meals[0]);
+                console.log("details random", meals[0].idMeal);
+                setId(meals[0].idMeal);
             } catch (e) {
                 console.error(e);
                 toggleErrorMessage(true);

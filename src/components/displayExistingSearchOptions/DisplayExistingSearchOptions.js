@@ -10,8 +10,8 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
         async function showExistingSearchOptions() {
             if(chosenSearch === "category") {
                 try {
-                    const result = await axios.get(buildEndpoint("categoryList", null, null))
-                    setExistingCategories(result.data.categories);
+                    const  { data : { categories }} = await axios.get(buildEndpoint("categoryList", null, null))
+                    setExistingCategories(categories);
                 } catch (e) {
                     console.error(e);
 
@@ -20,8 +20,8 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
 
             if(chosenSearch === "origin") {
                     try {
-                        const result = await axios.get(buildEndpoint("originList", null, null))
-                        setExistingOrigins(result.data.meals);
+                        const { data : { meals }} = await axios.get(buildEndpoint("originList", null, null))
+                        setExistingOrigins(meals);
                     } catch (e) {
                         console.error(e);
                     }

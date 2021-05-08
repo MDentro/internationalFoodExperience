@@ -17,16 +17,16 @@ function RecipeDetails({ id }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-                console.log("details", result.data.meals[0]);
-                setRecipeData(result.data.meals[0]);
-                setName(result.data.meals[0].strMeal);
-                setCategory(result.data.meals[0].strCategory);
-                setOrigin(result.data.meals[0].strArea);
-                setImage(result.data.meals[0].strMealThumb);
-                setIngredients(createIngredientsArray(result.data.meals[0]));
-                setMeasures(createMeasuresArray(result.data.meals[0]));
-                setInstruction(result.data.meals[0].strInstructions);
+                const { data : { meals }} = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+                console.log("details", meals[0]);
+                setRecipeData(meals[0]);
+                setName(meals[0].strMeal);
+                setCategory(meals[0].strCategory);
+                setOrigin(meals[0].strArea);
+                setImage(meals[0].strMealThumb);
+                setIngredients(createIngredientsArray(meals[0]));
+                setMeasures(createMeasuresArray(meals[0]));
+                setInstruction(meals[0].strInstructions);
             } catch (e) {
                 console.error(e);
             }
