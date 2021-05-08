@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import buildEndpoint from "../../helpers/buildEndpoint";
 
 function DisplayCategory() {
     const [categoryData, setCategoryData] = useState(null);
@@ -19,7 +20,7 @@ function DisplayCategory() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+                const result = await axios.get(buildEndpoint("categoryList", null, null))
                 setCategoryData(result.data.categories);
                 setVegetarianCategoryImage(result.data.categories[11].strCategoryThumb);
                 setVegetarianNameCategory(result.data.categories[11].strCategory);

@@ -1,6 +1,5 @@
 import createIngredientsArray from "../../helpers/createIngredientsArray";
 
-
 test ("only add ingredient to array when not null or empty string", () => {
     const meals = {
         strIngredient1: "green red lentils",

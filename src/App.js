@@ -13,13 +13,17 @@ function App() {
     const [chosenSearch, setChosenSearch] = useState("");
     const [error, setError] = useState("");
     const [endpoint, setEndpoint] = useState("");
+    const [errorMessage, toggleErrorMessage] = useState(false);
+    const [loading, toggleLoading] = useState(false);
 
     useEffect(() => {
         setMeals("");
-        setError("");
-
 
         async function fetchData() {
+            setError("");
+            toggleErrorMessage(false);
+            toggleLoading(true);
+
             try {
                 const {data: { meals }} = await axios.get(endpoint)
 
@@ -31,7 +35,9 @@ function App() {
 
             } catch (e) {
                 console.error(e);
+                toggleErrorMessage(true);
             }
+            toggleLoading(false);
         }
 
         if (endpoint) {
@@ -45,15 +51,20 @@ function App() {
 
             <h1>International Food Experience</h1>
 
-            <RandomRecipeSearchPage />
+            {/*<HomePage />*/}
+            {/*<RecipeDetailsPage />*/}
 
-            {/*<RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>*/}
-            {/*{error &&  (*/}
-            {/*    <span className="wrong-input-error">*/}
-            {/*                This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions*/}
-            {/*        chosenSearch={chosenSearch}/>}*/}
-            {/*           </span>*/}
-            {/*)}*/}
+            {/*<RandomRecipeSearchPage toggleErrorMessage={toggleErrorMessage} errorMessage={errorMessage}/>*/}
+
+            <RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>
+            {error &&  (
+                <span className="wrong-input-error">
+                            This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions
+                    chosenSearch={chosenSearch}/>}
+                       </span>
+            )}
+            {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
+            {loading && <span>Loading...</span>}
         </>
     );
 }

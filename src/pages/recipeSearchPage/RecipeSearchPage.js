@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SearchByUserInput from "../../components/searchByUserInput/SearchByUserInput";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
+import buildEndpoint from "../../helpers/buildEndpoint";
 
 function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, setEndpoint }) {
     const [searchInput, setSearchInput] = useState("");
@@ -9,41 +10,22 @@ function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, se
 
     const { handleSubmit, register, formState: {errors} } = useForm();
 
-    function onSubmit() {
+    function handleUserInput() {
         setSearchInputHandler(searchInput);
         setSearchByHandler(searchBy);
 
-        let endpoint = "";
-        if (searchBy === "category") {
-           endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchInput}`;
-        } else if (searchBy === "origin") {
-           endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${searchInput}`;
-        }
-        setEndpoint(endpoint);
+        setEndpoint(buildEndpoint("search", searchBy, searchInput));
 
-        handleClear();
-        // errors.search = "";
+        setSearchInput( "");
     }
 
-    const handleClear = () => {
-        setSearchInput( "");
-    };
+    function onSubmit() {
+        handleUserInput()
+    }
 
     function keyPressCheck(e) {
         if (e.keyCode === 13) {
-            setSearchInputHandler(searchInput);
-            setSearchByHandler(searchBy);
-
-            let endpoint = "";
-            if (searchBy === "category") {
-                endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchInput}`;
-            } else if (searchBy === "origin") {
-                endpoint = `https://www.themealdb.com/api/json/v1/1/filter.php?a=${searchInput}`;
-            }
-            setEndpoint(endpoint);
-
-            handleClear();
-            // errors.search = "";
+            handleUserInput()
         }
     }
 

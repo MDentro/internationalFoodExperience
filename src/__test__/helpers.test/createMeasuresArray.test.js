@@ -1,6 +1,4 @@
 import createMeasuresArray from "../../helpers/createMeasuresArray";
-import createIngredientsArray from "../../helpers/createIngredientsArray";
-
 
 test("only add measures to array when not null or empty string", () => {
     const meals = {

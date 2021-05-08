@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import buildEndpoint from "../../helpers/buildEndpoint";
 
 function DisplayExistingSearchOptions({ chosenSearch }) {
     const [existingCategories, setExistingCategories] = useState([]);
@@ -9,7 +10,7 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
         async function showExistingSearchOptions() {
             if(chosenSearch === "category") {
                 try {
-                    const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+                    const result = await axios.get(buildEndpoint("categoryList", null, null))
                     setExistingCategories(result.data.categories);
                 } catch (e) {
                     console.error(e);
@@ -19,7 +20,7 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
 
             if(chosenSearch === "origin") {
                     try {
-                        const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
+                        const result = await axios.get(buildEndpoint("originList", null, null))
                         setExistingOrigins(result.data.meals);
                     } catch (e) {
                         console.error(e);

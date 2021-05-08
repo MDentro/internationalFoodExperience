@@ -7,7 +7,6 @@ function createIngredientsArray (meals) {
             if (trimmedIngredient) {
                 ingredients.push(trimmedIngredient)
             }
-
         }
     }
 

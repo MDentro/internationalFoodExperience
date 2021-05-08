@@ -1,20 +1,23 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
+import buildEndpoint from "../../helpers/buildEndpoint";
 
-function RandomRecipeSearchPage() {
+function RandomRecipeSearchPage({ toggleErrorMessage, errorMessage }) {
     const [id, setId] = useState("");
     const [requestRefresh, toggleRequestRefresh] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
+            toggleErrorMessage(false);
             try {
-                const result = await axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`)
+                const result = await axios.get(buildEndpoint("random", null, null));
                 console.log("details random", result.data.meals[0]);
                 console.log("details random", result.data.meals[0].idMeal);
                 setId(result.data.meals[0].idMeal);
             } catch (e) {
                 console.error(e);
+                toggleErrorMessage(true);
             }
         }
 
@@ -28,19 +31,26 @@ function RandomRecipeSearchPage() {
 
     return (
         <>
-            <article>
-                <h1>Random Recipe</h1>
-                <p>Please try our random recipe for some inspiration. If you don't like the given recipe please press
-                    the button below and you'll get another one.</p>
-            </article>
+            <h1>Random Recipe</h1>
 
-            <RecipeDetails id={id}/>
-            <button
-                type="submit"
-                onClick={clickHandler}
-            >
-                NEW RANDOM RECIPE
-            </button>
+            {!errorMessage &&
+            <>
+                <article>
+                    <p>Please try our random recipe for some inspiration. If you don't like the given recipe please
+                        press
+                        the button below and you'll get another one.</p>
+                </article>
+
+                <RecipeDetails id={id}/>
+
+                <button
+                    type="submit"
+                    onClick={clickHandler}
+                >
+                    NEW RANDOM RECIPE
+                </button>
+            </>
+            }
         </>
     );
 }
