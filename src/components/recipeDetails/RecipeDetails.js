@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import createIngredientsArray from "../../helpers/createIngredientsArray";
 import createMeasuresArray from "../../helpers/createMeasuresArray";
+import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
 
 function RecipeDetails({ id }) {
@@ -17,7 +18,7 @@ function RecipeDetails({ id }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const { data : { meals }} = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+                const { data : { meals }} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, id))
                 console.log("details", meals[0]);
                 setRecipeData(meals[0]);
                 setName(meals[0].strMeal);

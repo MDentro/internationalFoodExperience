@@ -51,20 +51,20 @@ function App() {
 
             <h1>International Food Experience</h1>
 
-            {/*<HomePage />*/}
-            {/*<RecipeDetailsPage />*/}
+            <HomePage />
+            <RecipeDetailsPage />
 
             <RandomRecipeSearchPage toggleErrorMessage={toggleErrorMessage} errorMessage={errorMessage}/>
 
-            {/*<RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>*/}
-            {/*{error &&  (*/}
-            {/*    <span className="wrong-input-error">*/}
-            {/*                This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions*/}
-            {/*        chosenSearch={chosenSearch}/>}*/}
-            {/*           </span>*/}
-            {/*)}*/}
-            {/*{errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}*/}
-            {/*{loading && <span>Loading...</span>}*/}
+            <RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>
+            {error &&  (
+                <span className="wrong-input-error">
+                            This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions
+                    chosenSearch={chosenSearch}/>}
+                       </span>
+            )}
+            {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
+            {loading && <span>Loading...</span>}
         </>
     );
 }

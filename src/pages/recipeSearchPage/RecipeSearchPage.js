@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import SearchByUserInput from "../../components/searchByUserInput/SearchByUserInput";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
-import buildEndpoint from "../../helpers/buildEndpoint";
+import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
 function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, setEndpoint }) {
     const [searchInput, setSearchInput] = useState("");
@@ -14,7 +14,7 @@ function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, se
         setSearchInputHandler(searchInput);
         setSearchByHandler(searchBy);
 
-        setEndpoint(buildEndpoint("search", searchBy, searchInput));
+        setEndpoint(buildRecipeApiEndpoint("search", searchBy, searchInput, null));
 
         setSearchInput( "");
     }

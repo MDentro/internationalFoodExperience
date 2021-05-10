@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
-import buildEndpoint from "../../helpers/buildEndpoint";
+import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
 function RandomRecipeSearchPage({ toggleErrorMessage, errorMessage }) {
     const [id, setId] = useState("");
@@ -11,7 +11,7 @@ function RandomRecipeSearchPage({ toggleErrorMessage, errorMessage }) {
         async function fetchData() {
             toggleErrorMessage(false);
             try {
-                const { data : { meals }} = await axios.get(buildEndpoint("random", null, null));
+                const { data : { meals }} = await axios.get(buildRecipeApiEndpoint("random", null, null, null));
                 console.log("details random", meals[0]);
                 console.log("details random", meals[0].idMeal);
                 setId(meals[0].idMeal);

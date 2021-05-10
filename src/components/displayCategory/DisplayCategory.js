@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import buildEndpoint from "../../helpers/buildEndpoint";
+import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
 function DisplayCategory() {
     const [categoryData, setCategoryData] = useState(null);
@@ -20,7 +20,7 @@ function DisplayCategory() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const { data : { categories }}  = await axios.get(buildEndpoint("categoryList", null, null))
+                const { data : { categories }}  = await axios.get(buildRecipeApiEndpoint("categoryList", null, null, null))
                 setCategoryData(categories);
                 setVegetarianCategoryImage(categories[11].strCategoryThumb);
                 setVegetarianNameCategory(categories[11].strCategory);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import buildEndpoint from "../../helpers/buildEndpoint";
+import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
 function DisplayExistingSearchOptions({ chosenSearch }) {
     const [existingCategories, setExistingCategories] = useState([]);
@@ -10,7 +10,7 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
         async function showExistingSearchOptions() {
             if(chosenSearch === "category") {
                 try {
-                    const  { data : { categories }} = await axios.get(buildEndpoint("categoryList", null, null))
+                    const  { data : { categories }} = await axios.get(buildRecipeApiEndpoint("categoryList", null, null, null))
                     setExistingCategories(categories);
                 } catch (e) {
                     console.error(e);
@@ -20,7 +20,7 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
 
             if(chosenSearch === "origin") {
                     try {
-                        const { data : { meals }} = await axios.get(buildEndpoint("originList", null, null))
+                        const { data : { meals }} = await axios.get(buildRecipeApiEndpoint("originList", null, null, null))
                         setExistingOrigins(meals);
                     } catch (e) {
                         console.error(e);
