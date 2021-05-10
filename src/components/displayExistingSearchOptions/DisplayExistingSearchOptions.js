@@ -5,8 +5,11 @@ import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 function DisplayExistingSearchOptions({ chosenSearch }) {
     const [existingCategories, setExistingCategories] = useState([]);
     const [existingOrigins, setExistingOrigins] = useState([]);
+    const [errorMessage, toggleErrorMessage] = useState(false);
 
     useEffect(() => {
+        toggleErrorMessage(false);
+
         async function showExistingSearchOptions() {
             if(chosenSearch === "category") {
                 try {
@@ -14,7 +17,7 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
                     setExistingCategories(categories);
                 } catch (e) {
                     console.error(e);
-
+                    toggleErrorMessage(true);
                 }
             }
 
@@ -24,6 +27,7 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
                         setExistingOrigins(meals);
                     } catch (e) {
                         console.error(e);
+                        toggleErrorMessage(true);
                     }
                 }
             }
@@ -50,6 +54,7 @@ function DisplayExistingSearchOptions({ chosenSearch }) {
                         })}</ul>
                     </section>
                 </div>}
+            {errorMessage && <span>The alternative search options are not available at the moment, please try again later of try another search option now.</span>}
         </>
     );
 }
