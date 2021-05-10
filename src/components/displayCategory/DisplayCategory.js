@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
@@ -16,11 +16,15 @@ function DisplayCategory() {
     const [seafoodCategoryImage, setSeafoodCategoryImage] = useState("");
     const [miscellaneousNameCategory, setMiscellaneousNameCategory] = useState("");
     const [miscellaneousCategoryImage, setMiscellaneousCategoryImage] = useState("");
+    const [errorMessage, toggleErrorMessage] = useState(false);
+    const [loading, toggleLoading] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
+            toggleErrorMessage(false);
+            toggleLoading(true);
             try {
-                const { data : { categories }}  = await axios.get(buildRecipeApiEndpoint("categoryList", null, null, null))
+                const {data: {categories}} = await axios.get(buildRecipeApiEndpoint("categoryList", null, null, null))
                 setCategoryData(categories);
                 setVegetarianCategoryImage(categories[11].strCategoryThumb);
                 setVegetarianNameCategory(categories[11].strCategory);
@@ -37,7 +41,9 @@ function DisplayCategory() {
                 console.log(categories[0]);
             } catch (e) {
                 console.error(e);
+                toggleErrorMessage(true);
             }
+            toggleLoading(false);
         }
 
         fetchData();
@@ -47,39 +53,44 @@ function DisplayCategory() {
 
     return (
         <div>
-            <article className="display-category">
+            {!errorMessage && !loading &&
+            <>
+                <article className="display-category">
 
-                <section className="pasta">
-                    <img src={pastaCategoryImage} alt="Pasta Category"/>
-                    <p>{pastaNameCategory}</p>
-                </section>
+                    <section className="pasta">
+                        <img src={pastaCategoryImage} alt="Pasta Category"/>
+                        <p>{pastaNameCategory}</p>
+                    </section>
 
-                <section className="chicken">
-                    <img src={chickenCategoryImage} alt="Chicken Category"/>
-                    <p>{chickenNameCategory}</p>
-                </section>
+                    <section className="chicken">
+                        <img src={chickenCategoryImage} alt="Chicken Category"/>
+                        <p>{chickenNameCategory}</p>
+                    </section>
 
-                <section className="vegetarian">
-                    <img src={vegetarianCategoryImage} alt="Vegetarian Category"/>
-                    <p>{vegetarianNameCategory}</p>
-                </section>
+                    <section className="vegetarian">
+                        <img src={vegetarianCategoryImage} alt="Vegetarian Category"/>
+                        <p>{vegetarianNameCategory}</p>
+                    </section>
 
-                <section className="seafood">
-                    <img src={seafoodCategoryImage} alt="Seafood Category"/>
-                    <p>{seafoodNameCategory}</p>
-                </section>
+                    <section className="seafood">
+                        <img src={seafoodCategoryImage} alt="Seafood Category"/>
+                        <p>{seafoodNameCategory}</p>
+                    </section>
 
-                <section className="miscellaneous">
-                    <img src={miscellaneousCategoryImage} alt="Seafood Category"/>
-                    <p>{miscellaneousNameCategory}</p>
-                </section>
+                    <section className="miscellaneous">
+                        <img src={miscellaneousCategoryImage} alt="Seafood Category"/>
+                        <p>{miscellaneousNameCategory}</p>
+                    </section>
 
-                <section className="dessert">
-                    <img src={dessertCategoryImage} alt="Dessert Category"/>
-                    <p>{dessertNameCategory}</p>
-                </section>
+                    <section className="dessert">
+                        <img src={dessertCategoryImage} alt="Dessert Category"/>
+                        <p>{dessertNameCategory}</p>
+                    </section>
 
-            </article>
+                </article>
+            </>}
+            {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
+            {loading && <span>Loading...</span>}
         </div>
     );
 }

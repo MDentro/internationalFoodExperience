@@ -14,11 +14,15 @@ function RecipeDetails({ id }) {
     const [ingredients, setIngredients] = useState([]);
     const [measures, setMeasures] = useState([]);
     const [instruction, setInstruction] = useState("");
+    const [errorMessage, toggleErrorMessage] = useState(false);
+    const [loading, toggleLoading] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
+            toggleErrorMessage(false);
+            toggleLoading(true);
             try {
-                const { data : { meals }} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, id))
+                const {data: {meals}} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, id));
                 console.log("details", meals[0]);
                 setRecipeData(meals[0]);
                 setName(meals[0].strMeal);
@@ -30,51 +34,59 @@ function RecipeDetails({ id }) {
                 setInstruction(meals[0].strInstructions);
             } catch (e) {
                 console.error(e);
+                toggleErrorMessage(true);
             }
+            toggleLoading(false);
         }
 
+    if(id) {
         fetchData();
+    }
 
     }, [id]);
 
 
     return (
         <div>
-            <article className="recipe-container">
-                <h1>{name}</h1>
-                <section>
-                    <div>Category: {category}</div>
-                    <div>Origin: {origin}</div>
-                </section>
+            {!errorMessage && !loading &&
+            <>
+                <article className="recipe-container">
+                    <h1>{name}</h1>
+                    <section>
+                        <div>Category: {category}</div>
+                        <div>Origin: {origin}</div>
+                    </section>
 
-                <img src={image} alt="recipe"/>
+                    <img src={image} alt="recipe"/>
 
-                <div className="ingredients">
-                    <section className="ingredients">
+                    <div className="ingredients">
                         <p>Ingredients</p>
-                        <div>{ingredients && ingredients.map((ingredient) => {
-                            return <li key={ingredient}>{ingredient}:</li>
-                        })}</div>
-                    </section>
+                        <section className="measures">
+                            <div>{measures && measures.map((measure, index) => {
+                                return <li key={index}>{measure}</li>
+                            })}</div>
+                        </section>
+                    </div>
 
-                    <section className="measures">
-                        <div>{measures && measures.map((measure, index) => {
-                            return <li key={index}>{measure}</li>
-                        })}</div>
-                    </section>
-                </div>
+                        <section className="ingredients">
+                            <div>{ingredients && ingredients.map((ingredient, index) => {
+                                return <li key={index}>{ingredient}</li>
+                            })}</div>
+                        </section>
 
-                <section className="instructions">
-                    <p>Instructions</p>
-                    <p>{instruction.split("\r\n").map((instruction, index) => {
-                        return <span key={index}>
+                    <section className="instructions">
+                        <p>Instructions</p>
+                        <p>{instruction.split("\r\n").map((instruction) => {
+                            return <span key={instruction}>
                         {instruction}
-                            <br/>
+                                <br/>
                     </span>
-                    })}</p>
-                </section>
+                        })}</p>
+                    </section>
 
-            </article>
+                </article>
+            </>}
+            {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
         </div>
     );
 }

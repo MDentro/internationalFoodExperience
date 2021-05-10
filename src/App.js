@@ -51,10 +51,10 @@ function App() {
 
             <h1>International Food Experience</h1>
 
-            <HomePage />
-            <RecipeDetailsPage />
+            {/*<HomePage />*/}
+            {/*<RecipeDetailsPage />*/}
 
-            <RandomRecipeSearchPage toggleErrorMessage={toggleErrorMessage} errorMessage={errorMessage}/>
+            {/*<RandomRecipeSearchPage />*/}
 
             <RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>
             {error &&  (
