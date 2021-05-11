@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import DisplayFoundResult from "../displayFoundResult/DisplayFoundResult";
 
 function SearchByUserInput({ meals }) {

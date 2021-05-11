@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 

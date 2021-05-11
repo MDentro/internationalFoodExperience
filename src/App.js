@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 import axios from "axios";
 import {
     Switch,
     Route, Redirect,
-} from 'react-router-dom';
+} from "react-router-dom";
 import RecipeDetailsPage from "./pages/recipeDetailsPage/RecipeDetailsPage";
 import HomePage from "./pages/homePage/HomePage";
 import RecipeSearchPage from "./pages/recipeSearchPage/RecipeSearchPage";
@@ -86,19 +86,6 @@ function App() {
                 </div>
             </>
 
-
-
-
-
-
-
-
-
-
-            {/*<HomePage />*/}
-            {/*<RecipeDetailsPage />*/}
-
-            {/*<RandomRecipeSearchPage />*/}
 
             {/*<RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>*/}
             {/*{error &&  (*/}
