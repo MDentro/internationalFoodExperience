@@ -5,7 +5,7 @@ import createMeasuresArray from "../../helpers/createMeasuresArray";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
 
-function RecipeDetails({ id }) {
+function RecipeDetails({ idMeal }) {
     const [recipeData, setRecipeData] = useState(null);
     const [name, setName] = useState("");
     const [origin, setOrigin] = useState("");
@@ -22,7 +22,7 @@ function RecipeDetails({ id }) {
             toggleErrorMessage(false);
             toggleLoading(true);
             try {
-                const {data: {meals}} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, id));
+                const {data: { meals }} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, idMeal));
                 console.log("details", meals[0]);
                 setRecipeData(meals[0]);
                 setName(meals[0].strMeal);
@@ -39,11 +39,11 @@ function RecipeDetails({ id }) {
             toggleLoading(false);
         }
 
-    if(id) {
+    if(idMeal) {
         fetchData();
     }
 
-    }, [id]);
+    }, [idMeal]);
 
 
     return (

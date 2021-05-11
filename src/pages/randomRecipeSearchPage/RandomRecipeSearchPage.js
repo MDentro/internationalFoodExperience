@@ -4,7 +4,7 @@ import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
 function RandomRecipeSearchPage() {
-    const [id, setId] = useState("");
+    const [idMeal, setIdMeal] = useState("");
     const [requestRefresh, toggleRequestRefresh] = useState(false);
     const [errorMessage, toggleErrorMessage] = useState(false);
     const [loading, toggleLoading] = useState(false);
@@ -17,7 +17,7 @@ function RandomRecipeSearchPage() {
                 const { data : { meals }} = await axios.get(buildRecipeApiEndpoint("random", null, null, null));
                 console.log("details random", meals[0]);
                 console.log("details random", meals[0].idMeal);
-                setId(meals[0].idMeal);
+                setIdMeal(meals[0].idMeal);
             } catch (e) {
                 console.error(e);
                 toggleErrorMessage(true);
@@ -46,7 +46,7 @@ function RandomRecipeSearchPage() {
                         the button below and you'll get another one.</p>
                 </article>
 
-                <RecipeDetails id={id} />
+                <RecipeDetails idMeal={idMeal} />
 
                 <button
                     type="submit"

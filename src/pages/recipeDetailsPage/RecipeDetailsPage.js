@@ -2,11 +2,11 @@ import React from "react";
 import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
 
 
-function RecipeDetailsPage() {
+function RecipeDetailsPage({ idMeal }) {
 
     return (
      <>
-        <RecipeDetails id={52775} />
+        <RecipeDetails idMeal={52775} />
      </>
     );
 }
