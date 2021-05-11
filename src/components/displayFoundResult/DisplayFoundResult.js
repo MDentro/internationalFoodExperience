@@ -1,9 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import RecipeButton from "../buttons/recipeButton/RecipeButton";
 
 function DisplayFoundResult({ image, recipeTitle, idMeal }) {
+    const history = useHistory();
 
-    function printId() {
+    function showRecipe() {
+
+        history.push("/recipe")
+
+
         console.log(idMeal);
     }
 
@@ -16,7 +22,7 @@ function DisplayFoundResult({ image, recipeTitle, idMeal }) {
             <p>{idMeal}</p>
 
             <RecipeButton
-                clickHandler={printId}
+                clickHandler={showRecipe}
             >
                 {recipeTitle}
             </RecipeButton>

@@ -56,10 +56,7 @@ function App() {
 
     return (
         <>
-
             <h1>International Food Experience</h1>
-
-
             <>
                 <div>
                     <Navigation/>
@@ -77,7 +74,13 @@ function App() {
                             <RandomRecipeSearchPage />
                         </Route>
                         <Route path="/search" isAuth={isAuthenticated}>
-                            <RecipeSearchPage />
+                            <RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>
+                            {error &&  (
+                                <span className="wrong-input-error">
+                            This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions
+                                    chosenSearch={chosenSearch}/>}
+                       </span>
+                            )}
                         </Route>
                         <Route path="/recipe" isAuth={isAuthenticated}>
                             <RecipeDetailsPage />
@@ -87,15 +90,9 @@ function App() {
             </>
 
 
-            {/*<RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>*/}
-            {/*{error &&  (*/}
-            {/*    <span className="wrong-input-error">*/}
-            {/*                This {chosenSearch} doesn't exist. Please try {<DisplayExistingSearchOptions*/}
-            {/*        chosenSearch={chosenSearch}/>}*/}
-            {/*           </span>*/}
-            {/*)}*/}
-            {/*{errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}*/}
-            {/*{loading && <span>Loading...</span>}*/}
+
+            {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
+            {loading && <span>Loading...</span>}
         </>
     );
 }
