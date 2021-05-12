@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import RecipeButton from "../buttons/recipeButton/RecipeButton";
 import RecipeDetails from "../recipeDetails/RecipeDetails";
 import RecipeDetailsPage from "../../pages/recipeDetailsPage/RecipeDetailsPage";
@@ -16,7 +16,7 @@ function DisplayFoundResult({ image, recipeTitle, idMeal }) {
     function showRecipe() {
 
         // <RecipeDetailsPage idMeal={idMeal} />
-        history.push("/recipe/:idMeal", {idMeal})
+        // history.push("/recipe/:idMeal", {idMeal})
 
 
         console.log(idMeal);
@@ -29,12 +29,13 @@ function DisplayFoundResult({ image, recipeTitle, idMeal }) {
                 src={image}
             />
             <p>{idMeal}</p>
-
-            <RecipeButton
-                clickHandler={showRecipe}
-            >
-                {recipeTitle}
-            </RecipeButton>
+            <Link to={`/recipes/${idMeal}`}>
+                <RecipeButton
+                    clickHandler={showRecipe}
+                >
+                    {recipeTitle}
+                </RecipeButton>
+            </Link>
         </div>
     );
 }

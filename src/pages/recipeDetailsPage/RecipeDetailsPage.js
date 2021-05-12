@@ -1,12 +1,15 @@
 import React from "react";
 import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
+import { useParams } from "react-router-dom";
 
 
-function RecipeDetailsPage({ idMeal }) {
+function RecipeDetailsPage() {
+    const params = useParams();
+    console.log("params", params.idMeal);
 
     return (
      <>
-        <RecipeDetails idMeal={52775} />
+        <RecipeDetails idMeal={params.idMeal} />
      </>
     );
 }

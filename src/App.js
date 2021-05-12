@@ -82,7 +82,7 @@ function App() {
                        </span>
                             )}
                         </Route>
-                        <Route path="/recipe/:idMeal" isAuth={isAuthenticated}>
+                        <Route path="/recipes/:idMeal" isAuth={isAuthenticated}>
                             <RecipeDetailsPage />
                         </Route>
                     </Switch>

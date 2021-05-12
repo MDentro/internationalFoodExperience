@@ -1,12 +1,12 @@
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
-test ("return vegan url when inputting apiType search and searchBy category and searchInput vegan is given and id null", async () => {
+test ("return vegan url when inputting apiType search and searchBy category and searchInput vegan is given and id null",  () => {
     const apiType = "search";
     const searchBy = "category";
     const searchInput = "vegan";
     const idMeal = null;
 
-    const result = await buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=vegan`

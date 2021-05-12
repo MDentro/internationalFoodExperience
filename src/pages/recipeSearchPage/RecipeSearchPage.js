@@ -4,6 +4,7 @@ import SearchByUserInput from "../../components/searchByUserInput/SearchByUserIn
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 
+
 function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, setEndpoint }) {
     const [searchInput, setSearchInput] = useState("");
     const [searchBy, setSearchBy] = useState("");
@@ -28,10 +29,11 @@ function RecipeSearchPage({ setSearchInputHandler, setSearchByHandler, meals, se
             handleUserInput()
         }
     }
-
+    console.log("searchBy", searchBy)
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
+
                 <label htmlFor="search-by-category">
                     <input
                         type="radio"
