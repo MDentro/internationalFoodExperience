@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 function RecipeDetailsPage() {
     const params = useParams();
-    console.log("params", params.idMeal);
 
     return (
      <>
