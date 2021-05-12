@@ -1,11 +1,10 @@
 import React from "react";
 
-function RecipeButton({ children, clickHandler }) {
+function RecipeButton({ children }) {
 
     return (
         <button
             type="button"
-            onClick={clickHandler}
         >
             {children}
         </button>
