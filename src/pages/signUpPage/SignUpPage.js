@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import InputField from "../../components/inputField/InputField";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 function SignUpPage() {
+    const [registerSucces, toggleRegisterSucces] = useState(false);
+    const history = useHistory();
+
     const { handleSubmit, register, formState: {errors} } = useForm();
 
+    async function onSubmit(data) {
+        console.log(data);
+        try {
+            const result = await axios.post(`https://polar-lake-14365.herokuapp.com/api/auth/signup`,  {
+                email: data.email,
+                password: data.password,
+                username: data.username,
+                role: ["user"]
+            });
+            console.log(result)
+            toggleRegisterSucces(true);
+            setTimeout(() => {
+                history.push("/signin");
+            } ,2000);
 
-    function onSubmit(data) {
-        console.log("sign up form", data)
+        } catch (e) {
+            console.error(e)
+        }
     }
+
     return (
         <>
             <h1>Sign up</h1>
@@ -52,6 +73,7 @@ function SignUpPage() {
                 >
                     REGISTER
                 </SubmitButton>
+                {registerSucces === true && <p>The registration succeeded. You'll  be transferred to the login page</p>}
             </form>
         </>
     );

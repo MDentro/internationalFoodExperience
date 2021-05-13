@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./App.css";
 import axios from "axios";
 import {
@@ -12,9 +12,22 @@ import DisplayExistingSearchOptions from "./components/displayExistingSearchOpti
 import RandomRecipeSearchPage from "./pages/randomRecipeSearchPage/RandomRecipeSearchPage";
 import SignInPage from "./pages/signInPage/SignInPage";
 import SignUpPage from "./pages/signUpPage/SignUpPage";
-import Navigation from "./components/navigation/navigation";
+import Navigation from "./components/navigation/navigation"
+import { AuthContext } from "./context/AuthContext"
+
+
+function PrivateRoute({ children, user}) {
+    // omdat we nog steeds alle mogelijke properties zoals exact etc. op Route willen zetten, kunnen we met de ...rest operator zeggen:
+    // al die andere props die je verder nog ontvangt, zet die ook allemaal maar op <Route>
+    return (
+        <Route>
+            {user !== null ? children : <Redirect to="/" />}
+        </Route>
+    )
+}
 
 function App() {
+    const {  user } = useContext(AuthContext);
     const [meals, setMeals] = useState([]);
     const [query, setQuery] = useState("");
     const [chosenSearch, setChosenSearch] = useState("");
@@ -22,7 +35,6 @@ function App() {
     const [endpoint, setEndpoint] = useState("");
     const [errorMessage, toggleErrorMessage] = useState(false);
     const [loading, toggleLoading] = useState(false);
-    const [isAuthenticated, toggleIsAuthenticated ] = useState(false);
 
     useEffect(() => {
         setMeals("");
@@ -54,6 +66,8 @@ function App() {
 
     }, [endpoint]);
 
+
+
     return (
         <>
             <h1>International Food Experience</h1>
@@ -68,12 +82,12 @@ function App() {
                             <SignUpPage />
                         </Route>
                         <Route path="/signin" >
-                            <SignInPage toggleAuth={toggleIsAuthenticated}/>
+                            <SignInPage />
                         </Route>
-                        <Route path="/random-recipe" isAuth={isAuthenticated}>
+                        <PrivateRoute path="/random-recipe" user={user}>
                             <RandomRecipeSearchPage />
-                        </Route>
-                        <Route path="/search" isAuth={isAuthenticated}>
+                        </PrivateRoute>
+                        <PrivateRoute path="/search" user={user}>
                             <RecipeSearchPage setSearchInputHandler={setQuery} setSearchByHandler={setChosenSearch} meals={meals} setEndpoint={setEndpoint}/>
                             {error &&  (
                                 <span className="wrong-input-error">
@@ -81,8 +95,8 @@ function App() {
                                     chosenSearch={chosenSearch}/>}
                        </span>
                             )}
-                        </Route>
-                        <Route path="/recipes/:idMeal" isAuth={isAuthenticated}>
+                        </PrivateRoute>
+                        <Route path="/recipes/:idMeal" >
                             <RecipeDetailsPage />
                         </Route>
                     </Switch>

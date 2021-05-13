@@ -1,21 +1,27 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import InputField from "../../components/inputField/InputField";
 import { useForm } from "react-hook-form";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
+import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 
-function SignInPage({ toggleAuth }) {
-    const { handleSubmit, register, formState: {errors} } = useForm();
-    let history = useHistory();
+function SignInPage() {
+    const { login } = useContext(AuthContext);
+    const { handleSubmit, register, formState: {errors} } = useForm()
 
-    function signIn() {
-        toggleAuth(true);
-        history.push('/search');
-    }
 
-    function onSubmit(data) {
-        console.log("sign in form", data)
+    async function onSubmit(data) {
+        console.log(data);
+        try {
+            const result = await axios.post(`https://polar-lake-14365.herokuapp.com/api/auth/signin`, data);
+            console.log(result);
+            console.log(result.data.accessToken);
+            login(result.data.accessToken)
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     return (

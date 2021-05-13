@@ -1,23 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
-function Navigation({ isAuth, toggleAuth }) {
+function Navigation() {
     const history = useHistory();
-
-    function signIn() {
-        // toggleAuth(true);
-        history.push("/signin")
-    }
-
-    function signOut() {
-        // toggleAuth(false);
-        history.push("/")
-    }
+    const { signOut, user } = useContext(AuthContext);
 
     return (
         <>
             <nav>
                 <ul>
+
+                    {user !== null
+                    ? <>
+                        <li>
+                        <NavLink to="/random-recipe">
+                            RANDOM RECIPE
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/search">
+                            SEARCH
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <button
+                            type="button"
+                            onClick={signOut}
+                        >
+                            SIGN OUT
+                        </button>
+                    </li>
+                        </>
+                    :
+                        <>
                     <li>
                         <NavLink to="/">
                             HOME
@@ -31,28 +49,15 @@ function Navigation({ isAuth, toggleAuth }) {
                     </li>
 
                     <li>
-                        <NavLink to="/random-recipe">
-                            RANDOM RECIPE
-                        </NavLink>
-                    </li>
-
-                    <li>
-                        <NavLink to="/search">
-                            SEARCH
-                        </NavLink>
-                    </li>
-
-                    <li>
-                        <button type="button" onClick={signOut}>
-                            SIGN OUT
-                        </button>
-                    </li>
-
-                    <li>
-                        <button type="button" onClick={signIn}>
+                        <button
+                            type="button"
+                            onClick={() => history.push('/signin')}
+                        >
                             SIGN IN
                         </button>
                     </li>
+                    </>
+                        }
                 </ul>
             </nav>
         </>
