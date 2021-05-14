@@ -4,8 +4,10 @@ import InputField from "../../components/inputField/InputField";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import buildUserApiEndpoint from "../../helpers/buildUserApiEndpoint";
 
 function SignUpPage() {
+    const [errorMessage, toggleErrorMessage] = useState(false);
     const [registerSucces, toggleRegisterSucces] = useState(false);
     const history = useHistory();
 
@@ -13,8 +15,9 @@ function SignUpPage() {
 
     async function onSubmit(data) {
         console.log(data);
+        toggleErrorMessage(false);
         try {
-            const result = await axios.post(`https://polar-lake-14365.herokuapp.com/api/auth/signup`,  {
+            const result = await axios.post(buildUserApiEndpoint(false, true, false),  {
                 email: data.email,
                 password: data.password,
                 username: data.username,
@@ -28,8 +31,11 @@ function SignUpPage() {
 
         } catch (e) {
             console.error(e)
+            toggleErrorMessage(true);
         }
     }
+
+
 
     return (
         <>
@@ -75,6 +81,7 @@ function SignUpPage() {
                 </SubmitButton>
                 {registerSucces === true && <p>The registration succeeded. You'll  be transferred to the login page</p>}
             </form>
+            {errorMessage && <span>Something went wrong with your registration, please try again later.</span>}
         </>
     );
 }

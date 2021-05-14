@@ -16,12 +16,14 @@ import Navigation from "./components/navigation/navigation"
 import { AuthContext } from "./context/AuthContext"
 
 
-function PrivateRoute({ children, user}) {
+function PrivateRoute({ children, user }) {
+    console.log("dit is de user aan het begin en dit is null?", user)
     // omdat we nog steeds alle mogelijke properties zoals exact etc. op Route willen zetten, kunnen we met de ...rest operator zeggen:
     // al die andere props die je verder nog ontvangt, zet die ook allemaal maar op <Route>
     return (
         <Route>
             {user !== null ? children : <Redirect to="/" />}
+            {console.log("dit is de user aan het begin2", user)}
         </Route>
     )
 }
@@ -67,7 +69,6 @@ function App() {
     }, [endpoint]);
 
 
-
     return (
         <>
             <h1>International Food Experience</h1>
@@ -84,6 +85,8 @@ function App() {
                         <Route path="/signin" >
                             <SignInPage />
                         </Route>
+                        {console.log("Hier is de waarde van user wel gevuld", user)}
+
                         <PrivateRoute path="/random-recipe" user={user}>
                             <RandomRecipeSearchPage />
                         </PrivateRoute>
@@ -96,7 +99,7 @@ function App() {
                        </span>
                             )}
                         </PrivateRoute>
-                        <Route path="/recipes/:idMeal" >
+                        <Route path="/recipes/:idMeal">
                             <RecipeDetailsPage />
                         </Route>
                     </Switch>

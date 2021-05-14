@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import buildUserApiEndpoint from "../helpers/buildUserApiEndpoint";
 
 export const AuthContext = createContext({});
 
@@ -17,7 +18,7 @@ function AuthContextProvider({ children }) {
         const userId = decoded.sub;
 
         try {
-            const result = await axios.get(`https://polar-lake-14365.herokuapp.com/api/user`, {
+            const result = await axios.get(buildUserApiEndpoint(false, false, true), {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${jwtToken}`,

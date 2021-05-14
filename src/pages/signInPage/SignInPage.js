@@ -1,27 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import InputField from "../../components/inputField/InputField";
 import { useForm } from "react-hook-form";
 import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-
+import buildUserApiEndpoint from "../../helpers/buildUserApiEndpoint";
 
 function SignInPage() {
+    const [errorMessage, toggleErrorMessage] = useState(false);
+    const [loading, toggleLoading] = useState(false);
     const { login } = useContext(AuthContext);
     const { handleSubmit, register, formState: {errors} } = useForm()
 
 
     async function onSubmit(data) {
         console.log(data);
+        toggleErrorMessage(false);
+        toggleLoading(true);
         try {
-            const result = await axios.post(`https://polar-lake-14365.herokuapp.com/api/auth/signin`, data);
+            const result = await axios.post(buildUserApiEndpoint(true, false, false), data);
             console.log(result);
             console.log(result.data.accessToken);
-            login(result.data.accessToken)
+            login(result.data.accessToken);
         } catch (e) {
             console.error(e)
+            toggleErrorMessage(true);
         }
+        toggleLoading(false);
     }
 
     return (
@@ -56,6 +62,8 @@ function SignInPage() {
                 </SubmitButton>
             </form>
             <p>If you haven't got an account yet please <Link to="/signup">Sign up.</Link></p>
+            {errorMessage && <span>Something went wrong with logging you in, please try again later.</span>}
+            {loading && <span>Loading...</span>}
         </>
     );
 }
