@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import FunctionalButton from "../buttons/functionalButton/FunctionalButton";
 
 function Navigation() {
     const history = useHistory();
@@ -26,12 +27,12 @@ function Navigation() {
                     </li>
 
                     <li>
-                        <button
+                        <FunctionalButton
                             type="button"
-                            onClick={signOut}
+                            handleClick={signOut}
                         >
                             SIGN OUT
-                        </button>
+                        </FunctionalButton>
                     </li>
                         </>
                     :
@@ -49,12 +50,12 @@ function Navigation() {
                     </li>
 
                     <li>
-                        <button
+                        <FunctionalButton
                             type="button"
-                            onClick={() => history.push('/signin')}
+                            handleClick={() => history.push('/signin')}
                         >
                             SIGN IN
-                        </button>
+                        </FunctionalButton>
                     </li>
                     </>
                         }

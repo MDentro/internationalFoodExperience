@@ -1,18 +1,14 @@
 import React from "react";
 
-function SubmitButton({ children }) {
+function Button({ children, type }) {
 
     return (
         <button
-            type="submit"
+            type={type}
         >
             {children}
         </button>
     );
 }
 
-export default SubmitButton;
-
-
-
-
+export default Button;

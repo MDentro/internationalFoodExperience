@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import FunctionalButton from "../../components/buttons/functionalButton/FunctionalButton";
 
 function RandomRecipeSearchPage() {
     const [idMeal, setIdMeal] = useState("");
@@ -46,14 +47,14 @@ function RandomRecipeSearchPage() {
                         the button below and you'll get another one.</p>
                 </article>
 
-                <RecipeDetails idMeal={idMeal} />
-
-                <button
+                <FunctionalButton
                     type="submit"
-                    onClick={clickHandler}
+                    handleClick={clickHandler}
                 >
                     NEW RANDOM RECIPE
-                </button>
+                </FunctionalButton>
+
+                <RecipeDetails idMeal={idMeal} />
             </>
               }
             {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}

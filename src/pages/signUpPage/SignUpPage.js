@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import InputField from "../../components/inputField/InputField";
-import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import buildUserApiEndpoint from "../../helpers/buildUserApiEndpoint";
+import Button from "../../components/buttons/Button/Button";
 
 function SignUpPage() {
     const [errorMessage, toggleErrorMessage] = useState(false);
@@ -75,10 +75,11 @@ function SignUpPage() {
                     {errors.password && <p className="error">Password is required and should have a minimum of eight characters with at least one uppercase letter, one lowercase letter and one number.</p>}
                 </section>
 
-                <SubmitButton
+                <Button
+                    type="submit"
                 >
                     REGISTER
-                </SubmitButton>
+                </Button>
                 {registerSucces === true && <p>The registration succeeded. You'll  be transferred to the login page</p>}
             </form>
             {errorMessage && <span>Something went wrong with your registration, please try again later.</span>}

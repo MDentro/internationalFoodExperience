@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import InputField from "../../components/inputField/InputField";
 import { useForm } from "react-hook-form";
-import SubmitButton from "../../components/buttons/submitButton/SubmitButton";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import buildUserApiEndpoint from "../../helpers/buildUserApiEndpoint";
+import Button from "../../components/buttons/Button/Button";
 
 function SignInPage() {
     const [errorMessage, toggleErrorMessage] = useState(false);
@@ -56,10 +56,11 @@ function SignInPage() {
                     {errors.password && <p className="error">Password is required</p>}
                 </section>
 
-                <SubmitButton
+                <Button
+                    type="submit"
                 >
                     SIGN IN
-                </SubmitButton>
+                </Button>
             </form>
             <p>If you haven't got an account yet please <Link to="/signup">Sign up.</Link></p>
             {errorMessage && <span>Something went wrong with logging you in, please try again later.</span>}
