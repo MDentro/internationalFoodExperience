@@ -1,19 +1,19 @@
 import React from "react";
 import DisplayCategory from "../../components/displayCategory/DisplayCategory";
-
+import styles from "../homePage/HomePage.module.css";
 
 function HomePage() {
     return (
-        <>
-            <article>
+        <div className={styles.container}>
+            <article className={styles["introduction-text"]}>
                 <h1>Welcome to the international food experience website</h1>
-                <p>After logging in you can search for nice recipes from all over the world</p>
-                <p>Enjoy!</p>
+                <p className={styles["subscribt-introduction"]}>After logging in you can search for nice recipes from all over the world</p>
+                <p className={styles.enjoy}>Enjoy!</p>
             </article>
-            <div>
+            <article>
                 <DisplayCategory/>
-            </div>
-        </>
+            </article>
+        </div>
     );
 }
 

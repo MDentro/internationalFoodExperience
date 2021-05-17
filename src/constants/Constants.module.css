@@ -30,4 +30,5 @@
     height: calc(100vh - 70px);;
     flex-basis: 100vw;
     background-color: purple;
+    padding: 40px;
 }

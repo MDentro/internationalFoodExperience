@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import CategoryCard from "../categoryCard/CategoryCard";
+import styles from "./DisplayCategory.module.css";
 
 function DisplayCategory() {
     const [categoryData, setCategoryData] = useState(null);
@@ -55,37 +57,48 @@ function DisplayCategory() {
         <div>
             {!errorMessage && !loading &&
             <>
-                <article className="display-category">
+                <article className={styles["display-category"]}>
+                    <CategoryCard
+                        label={"card"}
+                        img={pastaCategoryImage}
+                        alt={"Pasta Category"}
+                        title={pastaNameCategory}
+                    />
 
-                    <section className="pasta">
-                        <img src={pastaCategoryImage} alt="Pasta Category"/>
-                        <p>{pastaNameCategory}</p>
-                    </section>
+                    <CategoryCard
+                        label={"card"}
+                        img={chickenCategoryImage}
+                        alt={"Chicken Category"}
+                        title={chickenNameCategory}
+                    />
 
-                    <section className="chicken">
-                        <img src={chickenCategoryImage} alt="Chicken Category"/>
-                        <p>{chickenNameCategory}</p>
-                    </section>
+                    <CategoryCard
+                        label={"card"}
+                        img={vegetarianCategoryImage}
+                        alt={"Vegetarian Category"}
+                        title={vegetarianNameCategory}
+                    />
 
-                    <section className="vegetarian">
-                        <img src={vegetarianCategoryImage} alt="Vegetarian Category"/>
-                        <p>{vegetarianNameCategory}</p>
-                    </section>
+                    <CategoryCard
+                        label={"card"}
+                        img={seafoodCategoryImage}
+                        alt={"Seafood Category"}
+                        title={seafoodNameCategory}
+                    />
 
-                    <section className="seafood">
-                        <img src={seafoodCategoryImage} alt="Seafood Category"/>
-                        <p>{seafoodNameCategory}</p>
-                    </section>
+                    <CategoryCard
+                        label={"card"}
+                        img={miscellaneousCategoryImage}
+                        alt={"Miscellaneous Category"}
+                        title={miscellaneousNameCategory}
+                    />
 
-                    <section className="miscellaneous">
-                        <img src={miscellaneousCategoryImage} alt="Seafood Category"/>
-                        <p>{miscellaneousNameCategory}</p>
-                    </section>
-
-                    <section className="dessert">
-                        <img src={dessertCategoryImage} alt="Dessert Category"/>
-                        <p>{dessertNameCategory}</p>
-                    </section>
+                    <CategoryCard
+                        label={"card"}
+                        img={dessertCategoryImage}
+                        alt={"Dessert Category"}
+                        title={dessertNameCategory}
+                    />
 
                 </article>
             </>}

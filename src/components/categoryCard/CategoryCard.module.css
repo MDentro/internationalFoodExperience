@@ -1,0 +1,9 @@
+.category-image {
+    border: 1px solid hsl(0, 0%, 44%);
+    background-color: white;
+}
+.category-title {
+    text-align: center;
+    font-weight: bold;
+    margin: 15px;
+}
