@@ -2,26 +2,32 @@ import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import FunctionalButton from "../buttons/functionalButton/FunctionalButton";
+import styles from "./Navigation.module.css"
 
 function Navigation() {
     const history = useHistory();
     const { signOut, user } = useContext(AuthContext);
 
     return (
-        <>
             <nav>
                 <ul>
 
                     {user !== null
                     ? <>
                         <li>
-                        <NavLink to="/random-recipe">
+                        <NavLink
+                            to="/random-recipe"
+                            className={styles["navigation-link"]}
+                        >
                             RANDOM RECIPE
                         </NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/search">
+                        <NavLink
+                            to="/search"
+                            className={styles["navigation-link"]}
+                        >
                             SEARCH
                         </NavLink>
                     </li>
@@ -38,13 +44,19 @@ function Navigation() {
                     :
                         <>
                     <li>
-                        <NavLink to="/">
+                        <NavLink
+                            to="/"
+                            className={styles["navigation-link"]}
+                        >
                             HOME
                         </NavLink>
                     </li>
 
                     <li>
-                        <NavLink to="/signup">
+                        <NavLink
+                            to="/signup"
+                            className={styles["navigation-link"]}
+                        >
                             SIGN UP
                         </NavLink>
                     </li>
@@ -61,7 +73,6 @@ function Navigation() {
                         }
                 </ul>
             </nav>
-        </>
     );
 }
 

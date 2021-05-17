@@ -1,0 +1,19 @@
+.container {
+    composes: container from "../../constants/Constants.module.css";
+}
+
+.form-container-user {
+    composes: form-container-user from "../../constants/Constants.user.registration.module.css"
+}
+
+.align-button {
+    composes: align-button from "../../constants/Constants.module.css";
+}
+
+.navigation-register-help {
+    composes: navigation-register-help from "../../constants/Constants.user.registration.module.css"
+}
+
+.error {
+    composes: error from "../../constants/Constants.user.registration.module.css"
+}

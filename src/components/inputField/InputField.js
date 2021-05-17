@@ -1,18 +1,24 @@
 import React from "react";
+import styles from "./InputField.module.css";
 
 function InputField({ label, fieldRef, name, type, id }) {
 
     return (
-        <>
-            <label htmlFor={id}>{label}</label>
+        <article className={styles["input-label-field-combination"]}>
+            <label
+                htmlFor={id}
+                className={styles["input-label"]}
+            >
+                {label}
+            </label>
                 <input
-                    className="input-field"
+                    className={styles["input-field"]}
                     {...fieldRef}
                     name={name}
                     type={type}
                     id={id}
                 />
-        </>
+        </article>
     );
 }
 

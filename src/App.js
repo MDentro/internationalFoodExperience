@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./App.css";
+import "./App.module.css";
 import {
     Switch,
     Route, Redirect,
@@ -10,7 +10,7 @@ import RecipeSearchPage from "./pages/recipeSearchPage/RecipeSearchPage";
 import RandomRecipeSearchPage from "./pages/randomRecipeSearchPage/RandomRecipeSearchPage";
 import SignInPage from "./pages/signInPage/SignInPage";
 import SignUpPage from "./pages/signUpPage/SignUpPage";
-import Navigation from "./components/navigation/navigation"
+import Navigation from "./components/navigation/Navigation"
 import { AuthContext } from "./context/AuthContext"
 
 
@@ -27,16 +27,15 @@ function PrivateRoute({ children, user }) {
 }
 
 function App() {
-    const {  user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     return (
-        <>
-            <h1>International Food Experience</h1>
             <>
                 <div>
-                    <Navigation/>
+                    <Navigation />
                     <Switch>
-                        <Route exact path="/">
+                        <Route
+                            exact path="/">
                             <HomePage />
                         </Route>
                         <Route path="/signup">
@@ -59,7 +58,6 @@ function App() {
                     </Switch>
                 </div>
             </>
-        </>
     );
 }
 

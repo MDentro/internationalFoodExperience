@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: hsl(83, 63%, 59%);
+    color: hsl(351, 16%, 18%);
+    font-weight: bold;
+    height: 70px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 400px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    list-style-type: none;
+    padding: 0 16px;
+}
+
+.ul {
+    composes: ul from "../../../src/constants/Constants.module.css";
+}
+
+.navigation-link {
+    composes: navigation-link from "../../../src/constants/Constants.module.css";
+}
+

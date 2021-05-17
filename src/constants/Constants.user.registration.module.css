@@ -1,0 +1,17 @@
+.form-container-user {
+    display: block;
+    height: 450px;
+    width: 450px;
+    padding: 20px;
+    background-color: yellow;
+}
+
+.navigation-register-help {
+    margin: 10px;
+}
+
+.error {
+    color: hsl(0, 100%, 50%);
+    font-weight: bold;
+    padding-left: 10px;
+}

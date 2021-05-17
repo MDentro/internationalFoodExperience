@@ -9,6 +9,7 @@ function RecipeDetailsPage() {
     return (
      <>
         <RecipeDetails idMeal={params.idMeal} />
+         {console.log("is dit undefined", params)}
      </>
     );
 }

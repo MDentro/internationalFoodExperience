@@ -1,0 +1,23 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Verdana", Arial, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(38, 33%, 95%);
+    color: hsl(351, 16%, 18%);
+}
+
+span {
+    color: hsl(0, 100%, 50%);
+    font-weight: bold;
+}
+
+h1 {
+    margin: 10px;
+    font-size: 40px;
+}

@@ -76,8 +76,8 @@ function RecipeDetails({ idMeal }) {
 
                     <section className="instructions">
                         <p>Instructions</p>
-                        <p>{instruction.split("\r\n").map((instruction) => {
-                            return <span key={instruction}>
+                        <p>{instruction.split("\r\n").map((instruction, index) => {
+                            return <span key={index}>
                         {instruction}
                                 <br/>
                     </span>

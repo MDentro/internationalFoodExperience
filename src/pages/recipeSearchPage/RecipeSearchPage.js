@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext  } from "react";
 import { useForm } from "react-hook-form";
 import SearchByUserInput from "../../components/searchByUserInput/SearchByUserInput";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 import axios from "axios";
 import DisplayExistingSearchOptions from "../../components/displayExistingSearchOptions/DisplayExistingSearchOptions";
-import Button from "../../components/buttons/Button/Button";
+import Button from "../../components/buttons/button/Button";
+import { AuthContext } from "../../context/AuthContext"
 
 
 function RecipeSearchPage() {
     const [meals, setMeals] = useState([]);
-    const [error, toggleError] = useState(false);
     const [endpoint, setEndpoint] = useState("");
+    const [error, toggleError] = useState(false);
     const [errorMessage, toggleErrorMessage] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [searchInput, setSearchInput] = useState("");
     const [searchBy, setSearchBy] = useState("");
 
-    const { handleSubmit, register, formState: {errors} } = useForm();
+    const {handleSubmit, register, formState: {errors}} = useForm({reValidateMode: 'onChange'});
+
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         setMeals("");
@@ -29,7 +32,7 @@ function RecipeSearchPage() {
             toggleLoading(true);
 
             try {
-                const {data: { meals }} = await axios.get(endpoint)
+                const {data: {meals}} = await axios.get(endpoint)
 
                 if (meals) {
                     setMeals(meals);
@@ -53,7 +56,7 @@ function RecipeSearchPage() {
 
     function handleUserInput() {
         setEndpoint(buildRecipeApiEndpoint("search", searchBy, searchInput, null));
-        setSearchInput( "");
+        setSearchInput("");
     }
 
     function onSubmit() {
@@ -65,10 +68,20 @@ function RecipeSearchPage() {
             handleUserInput()
         }
     }
-    console.log("searchBy", searchBy)
+
+    function onChangeRadioButtonHandler(input) {
+        setSearchBy(input);
+        toggleError(false)
+        errors.search = null;
+    }
 
     return (
         <>
+            <article>
+                <h1>Dear {user.username}, what will you eat today?</h1>
+                <p>Please search on category or origin</p>
+            </article>
+
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <label htmlFor="search-by-category">
@@ -77,7 +90,7 @@ function RecipeSearchPage() {
                         id="search-by-category"
                         name="searchBy"
                         {...register("searchBy", {required: true})}
-                        onChange={() => setSearchBy("category")}
+                        onChange={() => onChangeRadioButtonHandler("category")}
                     />
                     Search by category (example: pasta);
                 </label>
@@ -87,7 +100,7 @@ function RecipeSearchPage() {
                         id="search-by-origin"
                         name="searchBy"
                         {...register("searchBy", {required: true})}
-                        onChange={() => setSearchBy("origin")}
+                        onChange={() => onChangeRadioButtonHandler("origin")}
                     />
                     Search by origin (example: italian);
                     {errors.searchBy && <p className="error">You must select category or origin.</p>}
@@ -109,23 +122,22 @@ function RecipeSearchPage() {
                     {console.log("wat is errorsSearch?", errors.search)}
                     {errors.search && <p className="error">Search input is obligated.</p>}
 
-                <Button
-                    type="submit"
-                >
+                    <Button
+                        type="submit"
+                    >
                    SEARCH
                 </Button>
 
             </span>
-         </form>
+            </form>
 
             <SearchByUserInput meals={meals}/>
-            {error &&  (
+            {error && (
                 <span className="wrong-input-error">
                             This {searchBy} doesn't exist. Please try {<DisplayExistingSearchOptions
                     searchBy={searchBy}/>}
                        </span>
             )}
-
             {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
             {loading && <span>Loading...</span>}
         </>

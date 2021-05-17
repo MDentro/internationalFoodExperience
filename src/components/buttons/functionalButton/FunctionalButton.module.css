@@ -1,0 +1,3 @@
+.functional-button {
+    composes: button from "../../../../src/constants/Constants.module.css";
+}
