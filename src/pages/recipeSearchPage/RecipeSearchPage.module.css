@@ -1,0 +1,32 @@
+.container {
+    composes: container from "../../constants/Constants.module.css";
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background-color: pink;
+    margin: 10px;
+
+}
+
+.search-bar {
+    margin: 10px;
+    width: 330px;
+    height: 30px;
+}
+
+.search-button {
+    display: block;
+    text-align: end;
+}
+
+.introduction-text {
+    composes: introduction-text from "../../constants/Constants.module.css";
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}

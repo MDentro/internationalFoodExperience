@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext  } from "react";
-import { useForm } from "react-hook-form";
+import React, {useState, useEffect, useContext} from "react";
+import {useForm} from "react-hook-form";
 import SearchByUserInput from "../../components/searchByUserInput/SearchByUserInput";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 import axios from "axios";
 import DisplayExistingSearchOptions from "../../components/displayExistingSearchOptions/DisplayExistingSearchOptions";
 import Button from "../../components/buttons/button/Button";
-import { AuthContext } from "../../context/AuthContext"
+import {AuthContext} from "../../context/AuthContext"
+import styles from "./RecipeSearchPage.module.css";
 
 
 function RecipeSearchPage() {
@@ -19,7 +20,7 @@ function RecipeSearchPage() {
 
     const {handleSubmit, register, formState: {errors}} = useForm({reValidateMode: 'onChange'});
 
-    const { user } = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
 
     useEffect(() => {
         setMeals("");
@@ -76,15 +77,18 @@ function RecipeSearchPage() {
     }
 
     return (
-        <>
-            <article>
+        <div className={styles.container}>
+            <article className={styles["introduction-text"]}>
                 <h1>Dear {user.username}, what will you eat today?</h1>
                 <p>Please search on category or origin</p>
             </article>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 
-                <label htmlFor="search-by-category">
+                <label
+                    htmlFor="search-by-category"
+                    className={styles["radio-button-title"]}
+                >
                     <input
                         type="radio"
                         id="search-by-category"
@@ -94,7 +98,10 @@ function RecipeSearchPage() {
                     />
                     Search by category (example: pasta);
                 </label>
-                <label htmlFor="search-by-origin">
+                <label
+                    htmlFor="search-by-origin"
+                    className={styles["radio-button-title"]}
+                >
                     <input
                         type="radio"
                         id="search-by-origin"
@@ -109,6 +116,7 @@ function RecipeSearchPage() {
 
                 <span className="searchbar">
                     <input
+                        className={styles["search-bar"]}
                         type="text"
                         name="search"
                         id="recipe-search=bar"
@@ -122,12 +130,13 @@ function RecipeSearchPage() {
                     {console.log("wat is errorsSearch?", errors.search)}
                     {errors.search && <p className="error">Search input is obligated.</p>}
 
-                    <Button
-                        type="submit"
-                    >
-                   SEARCH
-                </Button>
-
+                    <article className={styles["search-button"]}>
+                        <Button
+                            type="submit"
+                        >
+                            SEARCH
+                        </Button>
+                    </article>
             </span>
             </form>
 
@@ -140,7 +149,7 @@ function RecipeSearchPage() {
             )}
             {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
             {loading && <span>Loading...</span>}
-        </>
+        </div>
     );
 }
 

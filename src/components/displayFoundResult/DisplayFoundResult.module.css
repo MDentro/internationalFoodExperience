@@ -1,0 +1,22 @@
+img.resize {
+    width:150px;
+    height: auto;
+}
+
+.search-result-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid hsl(0, 0%, 44%);
+    height: 151px;
+    width: 500px;
+}
+
+.recipe-link {
+    text-decoration: none;
+    color: hsl(27, 98%, 54%);
+    margin-left: 10px;
+}
+
+.recipe-link:hover {
+    color: hsl(351, 16%, 18%);
+}
