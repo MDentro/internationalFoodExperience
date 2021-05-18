@@ -1,0 +1,25 @@
+.random-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.random-introduction-container {
+    background-color: yellow;
+    max-width: 1150px;
+    margin: 20px;
+}
+
+.random-title-container {
+    max-width: 1150px;
+    background-color: magenta;
+}
+
+.random-button {
+    max-width: 1150px;
+    text-align: end;
+    background-color: turquoise;
+    padding-top: 10px;
+}
