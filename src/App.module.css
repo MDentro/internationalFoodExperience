@@ -12,11 +12,6 @@ body {
     color: hsl(351, 16%, 18%);
 }
 
-span {
-    color: hsl(0, 100%, 50%);
-    font-weight: bold;
-}
-
 h1 {
     margin: 10px;
     font-size: 40px;

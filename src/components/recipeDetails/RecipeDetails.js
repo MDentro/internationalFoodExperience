@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import createIngredientsArray from "../../helpers/createIngredientsArray";
 import createMeasuresArray from "../../helpers/createMeasuresArray";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import styles from "./RecipeDetails.module.css";
 
 
-function RecipeDetails({ idMeal }) {
+function RecipeDetails({idMeal}) {
     const [recipeData, setRecipeData] = useState(null);
     const [name, setName] = useState("");
     const [origin, setOrigin] = useState("");
@@ -22,7 +23,7 @@ function RecipeDetails({ idMeal }) {
             toggleErrorMessage(false);
             toggleLoading(true);
             try {
-                const {data: { meals }} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, idMeal));
+                const {data: {meals}} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, idMeal));
                 console.log("details", meals[0]);
                 setRecipeData(meals[0]);
                 setName(meals[0].strMeal);
@@ -39,9 +40,9 @@ function RecipeDetails({ idMeal }) {
             toggleLoading(false);
         }
 
-    if(idMeal) {
-        fetchData();
-    }
+        if (idMeal) {
+            fetchData();
+        }
 
     }, [idMeal]);
 
@@ -50,33 +51,42 @@ function RecipeDetails({ idMeal }) {
         <div>
             {!errorMessage && !loading &&
             <>
-                <article className="recipe-container">
-                    <h1>{name}</h1>
-                    <section>
-                        <div>Category: {category}</div>
-                        <div>Origin: {origin}</div>
-                    </section>
-
-                    <img src={image} alt="recipe"/>
-
-                    <div className="ingredients">
-                        <p>Ingredients</p>
-                        <section className="measures">
-                            <div>{measures && measures.map((measure, index) => {
-                                return <li key={index}>{measure}</li>
-                            })}</div>
+                    <div className={styles.introduction}>
+                        <h2>{name}</h2>
+                        <section>
+                            <span>Category: {category}</span>
+                            <span>Origin: {origin}</span>
                         </section>
                     </div>
 
-                        <section className="ingredients">
-                            <div>{ingredients && ingredients.map((ingredient, index) => {
-                                return <li key={index}>{ingredient}</li>
-                            })}</div>
-                        </section>
+                <article className={styles["recipe-container"]}>
+                    <img
+                        className={styles.resize}
+                        src={image} alt="recipe"
+                    />
 
-                    <section className="instructions">
-                        <p>Instructions</p>
-                        <p>{instruction.split("\r\n").map((instruction, index) => {
+                    <article className={styles["ingredients-container"]}>
+                        <h4>Ingredients</h4>
+                        <div className={styles["ingredients-measure-container"]}>
+                            <div className={styles["ingredients-measure"]}>
+                                <section className="measures">
+                                    <div>{measures && measures.map((measure, index) => {
+                                        return <li key={index}>{measure}</li>
+                                    })}</div>
+                                </section>
+                            </div>
+
+                            <section className={styles["ingredients-name"]}>
+                                <div>{ingredients && ingredients.map((ingredient, index) => {
+                                    return <li key={index}>{ingredient}</li>
+                                })}</div>
+                            </section>
+                        </div>
+                    </article>
+
+                    <section className={styles["instruction-title-container"]}>
+                        <h4>Instructions</h4>
+                        <p className={styles["instruction-container"]}>{instruction.split("\r\n").map((instruction, index) => {
                             return <span key={index}>
                         {instruction}
                                 <br/>
