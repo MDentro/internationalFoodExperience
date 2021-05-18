@@ -77,9 +77,9 @@ function RecipeSearchPage() {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles["search-container"]}>
             <article className={styles["introduction-text"]}>
-                <h1>Dear {user.username}, what will you eat today?</h1>
+                <h2>Dear {user && user.username}, what will you eat today?</h2>
                 <p>Please search on category or origin</p>
             </article>
 
@@ -90,26 +90,28 @@ function RecipeSearchPage() {
                     className={styles["radio-button-title"]}
                 >
                     <input
+                        className={styles["radio-button-title"]}
                         type="radio"
                         id="search-by-category"
                         name="searchBy"
                         {...register("searchBy", {required: true})}
                         onChange={() => onChangeRadioButtonHandler("category")}
                     />
-                    Search by category (example: pasta);
+                    Search by category (example: pasta)
                 </label>
                 <label
                     htmlFor="search-by-origin"
                     className={styles["radio-button-title"]}
                 >
                     <input
+                        className={styles["radio-button-title"]}
                         type="radio"
                         id="search-by-origin"
                         name="searchBy"
                         {...register("searchBy", {required: true})}
                         onChange={() => onChangeRadioButtonHandler("origin")}
                     />
-                    Search by origin (example: italian);
+                    Search by origin (example: italian)
                     {errors.searchBy && <p className="error">You must select category or origin.</p>}
                 </label>
 

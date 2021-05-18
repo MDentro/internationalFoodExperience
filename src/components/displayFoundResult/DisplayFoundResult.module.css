@@ -7,14 +7,23 @@ img.resize {
     display: flex;
     align-items: center;
     border: 1px solid hsl(0, 0%, 44%);
-    height: 151px;
-    width: 500px;
+    height: 152px;
+    max-width: 500px;
+    background-color: hsl(0, 0%, 100%);
+    margin: 10px;
+}
+
+.container-link {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .recipe-link {
     text-decoration: none;
     color: hsl(27, 98%, 54%);
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 .recipe-link:hover {

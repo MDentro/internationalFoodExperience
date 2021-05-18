@@ -1,9 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styles from "./DisplayFoundResult.module.css";
 
 
-function DisplayFoundResult({ image, recipeTitle, idMeal }) {
+function DisplayFoundResult({image, recipeTitle, idMeal}) {
     return (
         <div className={styles["search-result-container"]}>
             <img
@@ -11,12 +11,14 @@ function DisplayFoundResult({ image, recipeTitle, idMeal }) {
                 alt="meal impression"
                 src={image}
             />
-            <NavLink
-                className={styles["recipe-link"]}
-                to={`/recipes/${idMeal}`}
-            >
+            <div className={styles["container-link"]}>
+                <NavLink
+                    className={styles["recipe-link"]}
+                    to={`/recipes/${idMeal}`}
+                >
                     {recipeTitle}
-            </NavLink>
+                </NavLink>
+            </div>
         </div>
     );
 }
