@@ -4,8 +4,10 @@ import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 import axios from "axios";
 import DisplayExistingSearchOptions from "../../components/displayExistingSearchOptions/DisplayExistingSearchOptions";
 import Button from "../../components/buttons/button/Button";
+import RadioButton from "../../components/buttons/radioButton/RadioButton";
 import {AuthContext} from "../../context/AuthContext"
 import styles from "./RecipeSearchPage.module.css";
+import SearchBar from "../../components/searchBar/SearchBar";
 
 
 function RecipeSearchPage() {
@@ -57,12 +59,12 @@ function RecipeSearchPage() {
         setErrorRadioButton("");
         setErrorInputField("");
         e.preventDefault();
-        if(!searchBy && !searchInput) {
+        if (!searchBy && !searchInput) {
             setErrorRadioButton("Please select category or origin.");
             setErrorInputField("Search input is obligated.");
-        } else if(!searchBy) {
+        } else if (!searchBy) {
             setErrorRadioButton("Please select category or origin.");
-        } else if(!searchInput) {
+        } else if (!searchInput) {
             setErrorInputField("Search input is obligated.");
         } else {
             setEndpoint(buildRecipeApiEndpoint("search", searchBy, searchInput, null));
@@ -90,47 +92,38 @@ function RecipeSearchPage() {
             </article>
 
             <form className={styles.form} onSubmit={handleSearchForm}>
-
-                <label
-                    htmlFor="search-by-category"
-                    className={styles["radio-button-title"]}
+                <RadioButton
+                    label="search-by-category"
+                    type="radio"
+                    id="search-by-category"
+                    name="searchBy"
+                    onChange={() => onChangeRadioButtonHandler("category")}
                 >
-                    <input
-                        className={styles["radio-button-title"]}
-                        type="radio"
-                        id="search-by-category"
-                        name="searchBy"
-                        onChange={() => onChangeRadioButtonHandler("category")}
-                    />
                     Search by category (example: pasta)
-                </label>
-                <label
-                    htmlFor="search-by-origin"
-                    className={styles["radio-button-title"]}
+                </RadioButton>
+
+                <RadioButton
+                    label="search-by-origin"
+                    type="radio"
+                    id="search-by-origin"
+                    name="searchBy"
+                    onChange={() => onChangeRadioButtonHandler("origin")}
                 >
-                    <input
-                        className={styles["radio-button-title"]}
-                        type="radio"
-                        id="search-by-origin"
-                        name="searchBy"
-                        onChange={() => onChangeRadioButtonHandler("origin")}
-                    />
                     Search by origin (example: italian)
                     {errorRadioButton && <p className={styles.error}>{errorRadioButton}</p>}
-                </label>
-
+                </RadioButton>
 
                 <span className="searchbar">
-                    <input
-                        className={styles["search-bar"]}
-                        type="text"
-                        name="search"
-                        id="recipe-search=bar"
-                        value={searchInput}
-                        onChange={(e) => setSearchInput(e.target.value)}
-                        onKeyUp={keyPressCheck}
-                        placeholder="Search for a recipe"
-                    />
+                <SearchBar
+                    type="text"
+                    name="search"
+                    id="recipe-search=bar"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    onKeyUp={keyPressCheck}
+                    placeholder="Search for a recipe"
+
+                />
                     {errorInputField && <p className={styles.error}>{errorInputField}</p>}
 
                     <article className={styles["search-button"]}>
@@ -150,7 +143,8 @@ function RecipeSearchPage() {
                     searchBy={searchBy}/>}
                        </span>
             )}
-            {errorMessage && <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
+            {errorMessage &&
+            <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
             {loading && <span>Loading...</span>}
         </div>
     );

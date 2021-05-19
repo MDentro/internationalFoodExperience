@@ -1,0 +1,7 @@
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.radio-button-title {
+    font-size: 15px;
+}
