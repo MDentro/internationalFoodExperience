@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import styles from "./DisplayExistingSearchOptions.module.css"
 
 function DisplayExistingSearchOptions({ searchBy }) {
     const [existingCategories, setExistingCategories] = useState([]);
@@ -40,23 +41,23 @@ function DisplayExistingSearchOptions({ searchBy }) {
     return (
         <>
             {existingCategories  &&
-                <div className="existing-search">
-                    <section className="existing-search">
+
+                    <section className={styles["existing-search-options"]}>
                         <ul>{existingCategories && existingCategories.map((existingCategorie) => {
                            return <li key={existingCategorie.strCategory}>{existingCategorie.strCategory}</li>
                         })}</ul>
                     </section>
-                </div>}
+                }
 
             {existingOrigins &&
-                <div className="existing-search">
-                    <section className="existing-search">
+
+                    <section className={styles["existing-search-options"]}>
                         <ul>{existingOrigins && existingOrigins.map((existingOrigin) => {
                             return <li key={existingOrigin.strArea}>{existingOrigin.strArea}</li>
                         })}</ul>
                     </section>
-                </div>}
-            {errorMessage && <span>The alternative search options are not available at the moment, please try again later of try another search option now.</span>}
+                }
+            {errorMessage && <span className={styles.error}>The alternative search options are not available at the moment, please try again later of try another search option now.</span>}
         </>
     );
 }

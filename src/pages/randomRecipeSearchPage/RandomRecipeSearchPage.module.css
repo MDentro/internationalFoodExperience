@@ -23,3 +23,7 @@
     background-color: turquoise;
     padding-top: 10px;
 }
+
+.error {
+    composes: error from "../../constants/Constants.erros.module.css"
+}

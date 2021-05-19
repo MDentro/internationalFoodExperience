@@ -10,8 +10,3 @@
     margin: 10px;
 }
 
-.error {
-    color: hsl(0, 100%, 50%);
-    font-weight: bold;
-    padding-left: 10px;
-}

@@ -1,4 +1,4 @@
 .button {
-    composes: button from "../../../../src/constants/Constants.module.css";
+    composes: button from "../../../../src/constants/Constants.button.module.css";
 }
 

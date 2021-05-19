@@ -12,6 +12,8 @@ function AuthContextProvider({ children }) {
         user: null,
         status: "pending",
     });
+    //TODO
+    // const [exp, setExp] = useState("");
 
     async function fetchUserData(jwtToken) {
         const decoded = jwt_decode(jwtToken);
@@ -64,6 +66,22 @@ function AuthContextProvider({ children }) {
         })
         history.push("/");
     }
+
+
+    // TODO
+    // function automaticSignOut() {
+    //     const now = new Date();
+    //     const epochTimeNow = now.getTime();
+    //
+    //     if(epochTimeNow > decoded.exp) {
+    //         localStorage.clear();
+    //         setAuthState ({
+    //             user: null,
+    //             status: "done",
+    //         })
+    //     }
+    // }
+
 
     const data = {
         ...authState,

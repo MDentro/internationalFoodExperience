@@ -3,17 +3,17 @@
 }
 
 .form-container-user {
-    composes: form-container-user from "../../constants/Constants.user.registration.module.css"
+    composes: form-container-user from "../../constants/Constants.user.registration.module.css";
 }
 
 .align-button {
-    composes: align-button from "../../constants/Constants.module.css";
+    composes: align-button from "../../constants/Constants.button.module.css";
 }
 
 .navigation-register-help {
-    composes: navigation-register-help from "../../constants/Constants.user.registration.module.css"
+    composes: navigation-register-help from "../../constants/Constants.user.registration.module.css";
 }
 
 .error {
-    composes: error from "../../constants/Constants.user.registration.module.css"
+    composes: error from "../../constants/Constants.erros.module.css";
 }

@@ -7,7 +7,7 @@
 }
 
 .align-button {
-    composes: align-button from "../../constants/Constants.module.css";
+    composes: align-button from "../../constants/Constants.button.module.css";
 }
 
 .navigation-register-help {
@@ -15,5 +15,5 @@
 }
 
 .error {
-    composes: error from "../../constants/Constants.user.registration.module.css";
+    composes: error from "../../constants/Constants.erros.module.css";
 }

@@ -60,7 +60,10 @@ img.resize {
 .instruction-title-container {
     background-color: brown;
     max-width: 500px;
-    /*margin: 10px;*/
+}
+
+.error {
+    composes: error from "../../constants/Constants.erros.module.css";
 }
 
 

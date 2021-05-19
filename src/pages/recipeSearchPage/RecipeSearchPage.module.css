@@ -17,8 +17,7 @@
 }
 
 .search-bar {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px -10px;
     width: 330px;
     height: 30px;
 }
@@ -29,7 +28,7 @@
 }
 
 .introduction-text {
-    composes: introduction-text from "../../constants/Constants.module.css";
+    text-align: center;
 }
 
 input[type="radio"] {
@@ -42,6 +41,10 @@ h2 {
 
 .radio-button-title {
     font-size: 15px;
+}
+
+.error {
+    composes: error from "../../constants/Constants.erros.module.css";
 }
 
 @media screen and (min-width: 768px) {

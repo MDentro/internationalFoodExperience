@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import DisplayCategory from "../../components/displayCategory/DisplayCategory";
 import styles from "../homePage/HomePage.module.css";
+import {AuthContext} from "../../context/AuthContext";
 
 function HomePage() {
+    // const { clearLocalStorage } = useContext(AuthContext);
+
+    // clearLocalStorage();
     return (
         <div className={styles.container}>
             <article className={styles["introduction-text"]}>

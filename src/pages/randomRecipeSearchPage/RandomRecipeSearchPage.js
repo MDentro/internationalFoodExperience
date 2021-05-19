@@ -63,7 +63,7 @@ function RandomRecipeSearchPage() {
                 <RecipeDetails idMeal={idMeal}/>
             </>
             }
-            {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
+            {errorMessage && <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
             {loading && <span>Loading...</span>}
         </div>
     );

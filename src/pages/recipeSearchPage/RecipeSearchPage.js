@@ -112,7 +112,7 @@ function RecipeSearchPage() {
                         onChange={() => onChangeRadioButtonHandler("origin")}
                     />
                     Search by origin (example: italian)
-                    {errors.searchBy && <p className="error">You must select category or origin.</p>}
+                    {errors.searchBy && <p className={styles.error}>You must select category or origin.</p>}
                 </label>
 
 
@@ -130,7 +130,7 @@ function RecipeSearchPage() {
                     />
                     {console.log("wat is errors?", errors)}
                     {console.log("wat is errorsSearch?", errors.search)}
-                    {errors.search && <p className="error">Search input is obligated.</p>}
+                    {errors.search && <p className={styles.error}>Search input is obligated.</p>}
 
                     <article className={styles["search-button"]}>
                         <Button
@@ -144,12 +144,12 @@ function RecipeSearchPage() {
 
             <SearchByUserInput meals={meals}/>
             {error && (
-                <span className="wrong-input-error">
+                <span className={styles.error}>
                             This {searchBy} doesn't exist. Please try {<DisplayExistingSearchOptions
                     searchBy={searchBy}/>}
                        </span>
             )}
-            {errorMessage && <span>Something went wrong with fetching the data, please try again later.</span>}
+            {errorMessage && <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
             {loading && <span>Loading...</span>}
         </div>
     );
