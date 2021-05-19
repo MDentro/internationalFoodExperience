@@ -17,8 +17,10 @@ function RecipeSearchPage() {
     const [loading, toggleLoading] = useState(false);
     const [searchInput, setSearchInput] = useState("");
     const [searchBy, setSearchBy] = useState("");
+    const [errorRadioButton, setErrorRadioButton] = useState("")
+    const [errorInputField, setErrorInputField] = useState("");
 
-    const {handleSubmit, register, formState: {errors}} = useForm({reValidateMode: 'onChange'});
+    //const {handleSubmit, register, formState: {errors}} = useForm({reValidateMode: 'onChange'});
 
     const {user} = useContext(AuthContext);
 
@@ -55,25 +57,32 @@ function RecipeSearchPage() {
     }, [endpoint]);
 
 
-    function handleUserInput() {
-        setEndpoint(buildRecipeApiEndpoint("search", searchBy, searchInput, null));
-        setSearchInput("");
-    }
-
-    function onSubmit() {
-        handleUserInput()
+    function handleUserInput(e) {
+        setErrorRadioButton("");
+        setErrorInputField("");
+        e.preventDefault();
+        if(!searchBy && !searchInput) {
+            setErrorRadioButton("Please select category or origin.");
+            setErrorInputField("Search input is obligated.");
+        } else if(!searchBy) {
+            setErrorRadioButton("Please select category or origin.");
+        } else if(!searchInput) {
+            setErrorInputField("Search input is obligated.");
+        } else {
+            setEndpoint(buildRecipeApiEndpoint("search", searchBy, searchInput, null));
+            setSearchInput("");
+        }
     }
 
     function keyPressCheck(e) {
         if (e.keyCode === 13) {
-            handleUserInput()
+            handleUserInput(e)
         }
     }
 
     function onChangeRadioButtonHandler(input) {
         setSearchBy(input);
         toggleError(false);
-        errors.search = null;
     }
 
     return (
@@ -83,7 +92,7 @@ function RecipeSearchPage() {
                 <p>Please search on category or origin</p>
             </article>
 
-            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            <form className={styles.form} onSubmit={handleUserInput}>
 
                 <label
                     htmlFor="search-by-category"
@@ -94,7 +103,6 @@ function RecipeSearchPage() {
                         type="radio"
                         id="search-by-category"
                         name="searchBy"
-                        {...register("searchBy", {required: true})}
                         onChange={() => onChangeRadioButtonHandler("category")}
                     />
                     Search by category (example: pasta)
@@ -108,11 +116,10 @@ function RecipeSearchPage() {
                         type="radio"
                         id="search-by-origin"
                         name="searchBy"
-                        {...register("searchBy", {required: true})}
                         onChange={() => onChangeRadioButtonHandler("origin")}
                     />
                     Search by origin (example: italian)
-                    {errors.searchBy && <p className={styles.error}>You must select category or origin.</p>}
+                    {errorRadioButton && <p className={styles.error}>{errorRadioButton}</p>}
                 </label>
 
 
@@ -122,15 +129,12 @@ function RecipeSearchPage() {
                         type="text"
                         name="search"
                         id="recipe-search=bar"
-                        {...register("search", {required: true})}
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
                         onKeyUp={keyPressCheck}
                         placeholder="Search for a recipe"
                     />
-                    {console.log("wat is errors?", errors)}
-                    {console.log("wat is errorsSearch?", errors.search)}
-                    {errors.search && <p className={styles.error}>Search input is obligated.</p>}
+                    {errorInputField && <p className={styles.error}>{errorInputField}</p>}
 
                     <article className={styles["search-button"]}>
                         <Button
