@@ -72,7 +72,7 @@ function RecipeSearchPage() {
 
     function onChangeRadioButtonHandler(input) {
         setSearchBy(input);
-        toggleError(false)
+        toggleError(false);
         errors.search = null;
     }
 
