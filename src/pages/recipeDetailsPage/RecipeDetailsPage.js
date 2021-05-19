@@ -10,7 +10,6 @@ function RecipeDetailsPage() {
     return (
      <div className={styles["recipe-page-container"]}>
         <RecipeDetails idMeal={params.idMeal} />
-         {console.log("is dit undefined", params)}
      </div>
     );
 }

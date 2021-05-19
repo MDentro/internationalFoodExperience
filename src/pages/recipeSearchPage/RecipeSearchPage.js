@@ -1,5 +1,4 @@
 import React, {useState, useEffect, useContext} from "react";
-import {useForm} from "react-hook-form";
 import SearchByUserInput from "../../components/searchByUserInput/SearchByUserInput";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 import axios from "axios";
@@ -19,8 +18,6 @@ function RecipeSearchPage() {
     const [searchBy, setSearchBy] = useState("");
     const [errorRadioButton, setErrorRadioButton] = useState("")
     const [errorInputField, setErrorInputField] = useState("");
-
-    //const {handleSubmit, register, formState: {errors}} = useForm({reValidateMode: 'onChange'});
 
     const {user} = useContext(AuthContext);
 
@@ -57,7 +54,7 @@ function RecipeSearchPage() {
     }, [endpoint]);
 
 
-    function handleUserInput(e) {
+    function handleSearchForm(e) {
         setErrorRadioButton("");
         setErrorInputField("");
         e.preventDefault();
@@ -71,12 +68,13 @@ function RecipeSearchPage() {
         } else {
             setEndpoint(buildRecipeApiEndpoint("search", searchBy, searchInput, null));
             setSearchInput("");
+            setErrorInputField("");
         }
     }
 
     function keyPressCheck(e) {
         if (e.keyCode === 13) {
-            handleUserInput(e)
+            handleSearchForm(e)
         }
     }
 
@@ -92,7 +90,7 @@ function RecipeSearchPage() {
                 <p>Please search on category or origin</p>
             </article>
 
-            <form className={styles.form} onSubmit={handleUserInput}>
+            <form className={styles.form} onSubmit={handleSearchForm}>
 
                 <label
                     htmlFor="search-by-category"

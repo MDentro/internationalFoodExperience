@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import "./App.module.css";
 import {
     Switch,
@@ -11,53 +11,47 @@ import RandomRecipeSearchPage from "./pages/randomRecipeSearchPage/RandomRecipeS
 import SignInPage from "./pages/signInPage/SignInPage";
 import SignUpPage from "./pages/signUpPage/SignUpPage";
 import Navigation from "./components/navigation/Navigation"
-import { AuthContext } from "./context/AuthContext"
+import {AuthContext} from "./context/AuthContext"
 
 
-function PrivateRoute({ children, user, ...rest }) {
-    console.log("dit is de user aan het begin en dit is null?", user)
-    // omdat we nog steeds alle mogelijke properties zoals exact etc. op Route willen zetten, kunnen we met de ...rest operator zeggen:
-    // al die andere props die je verder nog ontvangt, zet die ook allemaal maar op <Route>
+function PrivateRoute({children, user, ...rest}) {
     return (
         <Route {...rest}>
-            {user !== null ? children : <Redirect to="/" />}
-            {console.log("dit is de user aan het begin2", user)}
+            {user !== null ? children : <Redirect to="/"/>}
         </Route>
     )
 }
 
 function App() {
-    const { user } = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
 
     return (
-            <>
-                <div>
-                    <Navigation />
-                    <Switch>
-                        <Route
-                            exact path="/">
-                            <HomePage />
-                        </Route>
-                        <Route path="/signup">
-                            <SignUpPage />
-                        </Route>
-                        <Route path="/signin" >
-                            <SignInPage />
-                        </Route>
-                        {console.log("Hier is de waarde van user wel gevuld", user)}
-
-                        <PrivateRoute path="/random-recipe" user={user}>
-                            <RandomRecipeSearchPage />
-                        </PrivateRoute>
-                        <PrivateRoute path="/search" user={user}>
-                            <RecipeSearchPage />
-                        </PrivateRoute>
-                        <PrivateRoute path="/recipes/:idMeal" user={user}>
-                            <RecipeDetailsPage />
-                        </PrivateRoute>
-                    </Switch>
-                </div>
-            </>
+        <>
+            <div>
+                <Navigation/>
+                <Switch>
+                    <Route
+                        exact path="/">
+                        <HomePage/>
+                    </Route>
+                    <Route path="/signup">
+                        <SignUpPage/>
+                    </Route>
+                    <Route path="/signin">
+                        <SignInPage/>
+                    </Route>
+                    <PrivateRoute path="/random-recipe" user={user}>
+                        <RandomRecipeSearchPage/>
+                    </PrivateRoute>
+                    <PrivateRoute path="/search" user={user}>
+                        <RecipeSearchPage/>
+                    </PrivateRoute>
+                    <PrivateRoute path="/recipes/:idMeal" user={user}>
+                        <RecipeDetailsPage/>
+                    </PrivateRoute>
+                </Switch>
+            </div>
+        </>
     );
 }
 
