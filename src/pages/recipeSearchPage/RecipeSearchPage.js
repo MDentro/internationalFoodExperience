@@ -53,7 +53,6 @@ function RecipeSearchPage() {
 
     }, [endpoint]);
 
-
     function handleSearchForm(e) {
         setErrorRadioButton("");
         setErrorInputField("");
