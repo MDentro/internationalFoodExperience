@@ -21,11 +21,12 @@ img.resize {
 
 .recipe-link {
     text-decoration: none;
-    color: hsl(27, 98%, 54%);
+    color: hsl(351, 16%, 18%);
+    font-size: 15px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .recipe-link:hover {
-    color: hsl(351, 16%, 18%);
+    color: hsl(27, 98%, 54%);
 }

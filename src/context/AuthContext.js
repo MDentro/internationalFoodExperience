@@ -13,11 +13,14 @@ function AuthContextProvider({ children }) {
         status: "pending",
     });
     //TODO
-    // const [exp, setExp] = useState("");
+    //  let [exp, setExp] = useState("");
+    //  const exp = "";
 
-    async function fetchUserData(jwtToken) {
+    async function fetchUserData(jwtToken, exp) {
         const decoded = jwt_decode(jwtToken);
         const userId = decoded.sub;
+        // exp = decoded.exp;
+        // console.log(exp);
 
         try {
             const result = await axios.get(buildUserApiEndpoint(false, false, true), {
@@ -68,12 +71,14 @@ function AuthContextProvider({ children }) {
     }
 
 
-    // TODO
-    // function automaticSignOut() {
+    //TODO
+    // function automaticSignOut(exp) {
+    //     fetchUserData(exp)
     //     const now = new Date();
     //     const epochTimeNow = now.getTime();
+    //     console.log("wat is dit", exp);
     //
-    //     if(epochTimeNow > decoded.exp) {
+    //     if(epochTimeNow > exp) {
     //         localStorage.clear();
     //         setAuthState ({
     //             user: null,
@@ -83,10 +88,12 @@ function AuthContextProvider({ children }) {
     // }
 
 
+
     const data = {
         ...authState,
         login: login,
         signOut: signOut,
+        // automaticSignOut: automaticSignOut,
     }
 
     return (

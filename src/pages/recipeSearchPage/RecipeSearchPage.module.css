@@ -10,16 +10,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     background-color: pink;
     margin: 10px;
     max-width: 380px;
-}
-
-.search-bar {
-    margin: 10px 0 10px -10px;
-    width: 330px;
-    height: 30px;
 }
 
 .search-button {
@@ -31,16 +25,8 @@
     text-align: center;
 }
 
-input[type="radio"] {
-    margin-right: 10px;
-}
-
 h2 {
     font-size: 20px;
-}
-
-.radio-button-title {
-    font-size: 15px;
 }
 
 .error {

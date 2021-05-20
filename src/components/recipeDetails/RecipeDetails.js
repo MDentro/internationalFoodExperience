@@ -54,8 +54,8 @@ function RecipeDetails({idMeal}) {
                     <div className={styles.introduction}>
                         <h2>{name}</h2>
                         <section>
-                            <span>Category: {category}</span>
-                            <span>Origin: {origin}</span>
+                            <span className={styles["recipe-tags"]}>Category: {category}</span>
+                            <span className={styles["recipe-tags"]}>Origin: {origin}</span>
                         </section>
                     </div>
 

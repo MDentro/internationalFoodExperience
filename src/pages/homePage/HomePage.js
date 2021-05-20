@@ -4,15 +4,15 @@ import styles from "../homePage/HomePage.module.css";
 import {AuthContext} from "../../context/AuthContext";
 
 function HomePage() {
-    // const { clearLocalStorage } = useContext(AuthContext);
+    // const { automaticSignOut } = useContext(AuthContext);
+    // automaticSignOut());
 
-    // clearLocalStorage();
     return (
         <div className={styles.container}>
             <article className={styles["introduction-text"]}>
                 <h1>Welcome to the international food experience website</h1>
-                <p className={styles["subscribt-introduction"]}>After logging in you can search for nice recipes from all over the world</p>
-                <p className={styles.enjoy}>Enjoy!</p>
+                <h4>After logging in you can search for nice recipes from all over the world</h4>
+                <h2>Enjoy!</h2>
             </article>
             <article>
                 <DisplayCategory/>

@@ -1,10 +1,9 @@
-import styles from "../../pages/recipeSearchPage/RecipeSearchPage.module.css";
+import styles from "./SearchBar.module.css";
 import React from "react";
 
 
 function SearchBar({type = "text", name, id, value, onChange, onKeyUp, placeholder, children}) {
     return (
-        <span className="searchbar">
             <input
                 className={styles["search-bar"]}
                 type={type}
@@ -17,7 +16,6 @@ function SearchBar({type = "text", name, id, value, onChange, onKeyUp, placehold
             >
                 {children}
             </input>
-        </span>
     );
 }
 
