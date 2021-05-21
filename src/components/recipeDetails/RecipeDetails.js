@@ -7,7 +7,6 @@ import styles from "./RecipeDetails.module.css";
 
 
 function RecipeDetails({idMeal}) {
-    const [recipeData, setRecipeData] = useState(null);
     const [name, setName] = useState("");
     const [origin, setOrigin] = useState("");
     const [category, setCategory] = useState("");
@@ -24,8 +23,6 @@ function RecipeDetails({idMeal}) {
             toggleLoading(true);
             try {
                 const {data: {meals}} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, idMeal));
-                console.log("details", meals[0]);
-                setRecipeData(meals[0]);
                 setName(meals[0].strMeal);
                 setCategory(meals[0].strCategory);
                 setOrigin(meals[0].strArea);
@@ -51,13 +48,13 @@ function RecipeDetails({idMeal}) {
         <div>
             {!errorMessage && !loading &&
             <>
-                    <div className={styles.introduction}>
-                        <h2>{name}</h2>
-                        <section>
-                            <span className={styles["recipe-tags"]}>Category: {category}</span>
-                            <span className={styles["recipe-tags"]}>Origin: {origin}</span>
-                        </section>
-                    </div>
+                <div className={styles.introduction}>
+                    <h2>{name}</h2>
+                    <section>
+                        <span className={styles["recipe-tags"]}>Category: {category}</span>
+                        <span className={styles["recipe-tags"]}>Origin: {origin}</span>
+                    </section>
+                </div>
 
                 <article className={styles["recipe-container"]}>
                     <img
@@ -95,8 +92,10 @@ function RecipeDetails({idMeal}) {
                     </section>
 
                 </article>
-            </>}
-            {errorMessage && <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
+            </>
+            }
+            {errorMessage &&
+            <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
         </div>
     );
 }

@@ -5,7 +5,6 @@ import CategoryCard from "../categoryCard/CategoryCard";
 import styles from "./DisplayCategory.module.css";
 
 function DisplayCategory() {
-    const [categoryData, setCategoryData] = useState(null);
     const [vegetarianNameCategory, setVegetarianNameCategory] = useState("");
     const [vegetarianCategoryImage, setVegetarianCategoryImage] = useState("");
     const [pastaNameCategory, setPastaNameCategory] = useState("");
@@ -27,7 +26,6 @@ function DisplayCategory() {
             toggleLoading(true);
             try {
                 const {data: {categories}} = await axios.get(buildRecipeApiEndpoint("categoryList", null, null, null))
-                setCategoryData(categories);
                 setVegetarianCategoryImage(categories[11].strCategoryThumb);
                 setVegetarianNameCategory(categories[11].strCategory);
                 setPastaCategoryImage(categories[5].strCategoryThumb);
@@ -40,7 +38,6 @@ function DisplayCategory() {
                 setSeafoodNameCategory(categories[7].strCategory);
                 setMiscellaneousCategoryImage(categories[4].strCategoryThumb);
                 setMiscellaneousNameCategory(categories[4].strCategory);
-                console.log(categories[0]);
             } catch (e) {
                 console.error(e);
                 toggleErrorMessage(true);
@@ -102,7 +99,8 @@ function DisplayCategory() {
 
                 </article>
             </>}
-            {errorMessage && <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
+            {errorMessage &&
+            <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
             {loading && <span>Loading...</span>}
         </div>
     );

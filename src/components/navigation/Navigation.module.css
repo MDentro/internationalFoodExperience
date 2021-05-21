@@ -27,11 +27,13 @@ nav ul {
     color: hsl(351, 16%, 18%);
 }
 
-/*.ul {*/
-/*    composes: ul from "../../../src/constants/Constants.module.css";*/
-/*}*/
+.navigation-link:hover {
+    color: hsl(27, 98%, 54%);
+}
 
-/*.navigation-link {*/
-/*    composes: navigation-link from "../../../src/constants/Constants.module.css";*/
-/*}*/
+@media only screen and (min-width: 576px) {
+    nav {
+        padding-right: 25px;
+    }
+}
 

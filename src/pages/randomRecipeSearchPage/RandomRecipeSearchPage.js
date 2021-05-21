@@ -17,8 +17,6 @@ function RandomRecipeSearchPage() {
             toggleLoading(true);
             try {
                 const {data: {meals}} = await axios.get(buildRecipeApiEndpoint("random", null, null, null));
-                console.log("details random", meals[0]);
-                console.log("details random", meals[0].idMeal);
                 setIdMeal(meals[0].idMeal);
             } catch (e) {
                 console.error(e);
@@ -51,19 +49,20 @@ function RandomRecipeSearchPage() {
                     </article>
 
                     <div className={styles["random-button"]}>
-                    <FunctionalButton
-                        type="submit"
-                        handleClick={clickHandler}
-                    >
-                        NEW RANDOM RECIPE
-                    </FunctionalButton>
+                        <FunctionalButton
+                            type="submit"
+                            handleClick={clickHandler}
+                        >
+                            NEW RANDOM RECIPE
+                        </FunctionalButton>
                     </div>
                 </div>
 
                 <RecipeDetails idMeal={idMeal}/>
             </>
             }
-            {errorMessage && <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
+            {errorMessage &&
+            <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
             {loading && <span>Loading...</span>}
         </div>
     );

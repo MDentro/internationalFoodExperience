@@ -65,7 +65,8 @@ function SignInPage() {
                         </Button>
                     </section>
                 </form>
-                <p className={styles["navigation-register-help"]}>If you haven't got an account yet please <Link to="/signup">Sign
+                <p className={styles["navigation-register-help"]}>If you haven't got an account yet please <Link
+                    to="/signup">Sign
                     up.</Link></p>
                 {errorMessage && <span>Something went wrong with logging you in, please try again later.</span>}
                 {loading && <span>Loading...</span>}

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./InputField.module.css";
 
-function InputField({ label, fieldRef, name, type, id }) {
+function InputField({label, fieldRef, name, type, id}) {
 
     return (
         <article className={styles["input-label-field-combination"]}>
@@ -11,13 +11,13 @@ function InputField({ label, fieldRef, name, type, id }) {
             >
                 {label}
             </label>
-                <input
-                    className={styles["input-field"]}
-                    {...fieldRef}
-                    name={name}
-                    type={type}
-                    id={id}
-                />
+            <input
+                className={styles["input-field"]}
+                {...fieldRef}
+                name={name}
+                type={type}
+                id={id}
+            />
         </article>
     );
 }

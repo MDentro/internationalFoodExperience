@@ -21,8 +21,7 @@ function buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal) {
         endpoint = baseUrl + `/list.php?a=list`
     } else if (apiType === "selectedRecipe" && searchBy === null && searchInput === null) {
         endpoint = baseUrl + `/lookup.php?i=${idMeal}`;
-    }
-     else {
+    } else {
         endpoint = errorMessage;
     }
 

@@ -9,70 +9,69 @@ function Navigation() {
     const { signOut, user } = useContext(AuthContext);
 
     return (
-            <nav>
-                <ul>
-
-                    {user !== null
+        <nav>
+            <ul>
+                {user !== null
                     ? <>
                         <li>
-                        <NavLink
-                            to="/random-recipe"
-                            className={styles["navigation-link"]}
-                        >
-                            RANDOM RECIPE
-                        </NavLink>
-                    </li>
+                            <NavLink
+                                to="/random-recipe"
+                                className={styles["navigation-link"]}
+                            >
+                                RANDOM RECIPE
+                            </NavLink>
+                        </li>
 
-                    <li>
-                        <NavLink
-                            to="/search"
-                            className={styles["navigation-link"]}
-                        >
-                            SEARCH
-                        </NavLink>
-                    </li>
+                        <li>
+                            <NavLink
+                                to="/search"
+                                className={styles["navigation-link"]}
+                            >
+                                SEARCH
+                            </NavLink>
+                        </li>
 
-                    <li>
-                        <FunctionalButton
-                            type="button"
-                            handleClick={signOut}
-                        >
-                            SIGN OUT
-                        </FunctionalButton>
-                    </li>
-                        </>
-                    :
-                        <>
-                    <li>
-                        <NavLink
-                            to="/"
-                            className={styles["navigation-link"]}
-                        >
-                            HOME
-                        </NavLink>
-                    </li>
-
-                    <li>
-                        <NavLink
-                            to="/signup"
-                            className={styles["navigation-link"]}
-                        >
-                            SIGN UP
-                        </NavLink>
-                    </li>
-
-                    <li>
-                        <FunctionalButton
-                            type="button"
-                            handleClick={() => history.push('/signin')}
-                        >
-                            SIGN IN
-                        </FunctionalButton>
-                    </li>
+                        <li>
+                            <FunctionalButton
+                                type="button"
+                                handleClick={signOut}
+                            >
+                                SIGN OUT
+                            </FunctionalButton>
+                        </li>
                     </>
-                        }
-                </ul>
-            </nav>
+                    :
+                    <>
+                        <li>
+                            <NavLink
+                                to="/"
+                                className={styles["navigation-link"]}
+                            >
+                                HOME
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink
+                                to="/signup"
+                                className={styles["navigation-link"]}
+                            >
+                                SIGN UP
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <FunctionalButton
+                                type="button"
+                                handleClick={() => history.push('/signin')}
+                            >
+                                SIGN IN
+                            </FunctionalButton>
+                        </li>
+                    </>
+                }
+            </ul>
+        </nav>
     );
 }
 

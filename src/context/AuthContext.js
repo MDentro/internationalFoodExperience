@@ -61,7 +61,6 @@ function AuthContextProvider({ children }) {
     }
 
     function signOut() {
-        console.log("logout")
         localStorage.clear();
         setAuthState ({
             user: null,

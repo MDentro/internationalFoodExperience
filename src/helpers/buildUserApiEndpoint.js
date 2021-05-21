@@ -5,14 +5,14 @@ function buildUserApiEndpoint(signIn, signUp, requestUser) {
     const errorMessage = "Something went wrong with connecting to the right url."
 
     if (signIn === true && signUp === false && requestUser === false) {
-            endpoint = baseUrl + `/api/auth/signin`;
-        } else if (signIn === false && signUp === true && requestUser === false) {
-            endpoint = baseUrl + `/api/auth/signup`;
-        } else if (signIn === false && signUp === false && requestUser === true) {
+        endpoint = baseUrl + `/api/auth/signin`;
+    } else if (signIn === false && signUp === true && requestUser === false) {
+        endpoint = baseUrl + `/api/auth/signup`;
+    } else if (signIn === false && signUp === false && requestUser === true) {
         endpoint = baseUrl + `/api/user`;
-        } else {
-            endpoint = errorMessage;
-        }
+    } else {
+        endpoint = errorMessage;
+    }
 
     return endpoint;
 }

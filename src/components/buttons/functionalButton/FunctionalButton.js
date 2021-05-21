@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./FunctionalButton.module.css"
 
-function FunctionalButton({ children, handleClick, type }) {
+function FunctionalButton({children, handleClick, type}) {
 
     return (
         <button

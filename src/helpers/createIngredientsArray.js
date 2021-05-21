@@ -1,4 +1,4 @@
-function createIngredientsArray (meals) {
+function createIngredientsArray(meals) {
     const ingredients = [];
 
     for (let i = 1; i <= 20; i++) {
