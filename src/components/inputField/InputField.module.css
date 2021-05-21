@@ -1,5 +1,4 @@
 .input-field {
-    background-color: green;
     height: 30px;
     margin: 10px;
     width: 200px;
@@ -13,5 +12,4 @@
 
 .input-label-field-combination {
     margin: 10px;
-    background-color: blue;
 }

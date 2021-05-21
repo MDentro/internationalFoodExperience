@@ -1,5 +1,4 @@
 .search-container {
-    background-color: orange;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +10,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-color: pink;
     margin: 10px;
     max-width: 380px;
 }

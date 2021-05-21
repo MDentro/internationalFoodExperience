@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: blue;
     padding: 15px;
 }
 
@@ -38,7 +37,6 @@ img.resize {
     max-width: 200px;
     list-style: none;
     text-align: end;
-    background-color: green;
     padding: 10px;
     font-size: 15px;
 }
@@ -46,7 +44,6 @@ img.resize {
 .ingredients-name {
     max-width: 200px;
     list-style: none;
-    background-color: yellow;
     padding: 10px;
     text-align: start;
     font-size: 15px;
@@ -55,12 +52,10 @@ img.resize {
 .instruction-container {
     padding: 10px;
     max-width: 500px;
-    background-color: purple;
     text-align: start;
 }
 
 .instruction-title-container {
-    background-color: brown;
     max-width: 500px;
 }
 
@@ -79,7 +74,6 @@ img.resize {
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: orange;
     }
 
     img.resize {
@@ -103,7 +97,6 @@ img.resize {
         flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
-        background-color: red;
         padding: 15px;
     }
 }
