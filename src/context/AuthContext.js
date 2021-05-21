@@ -1,12 +1,12 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, {createContext, useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import buildUserApiEndpoint from "../helpers/buildUserApiEndpoint";
 
 export const AuthContext = createContext({});
 
-function AuthContextProvider({ children }) {
+function AuthContextProvider({children}) {
     const history = useHistory();
     const [authState, setAuthState] = useState({
         user: null,

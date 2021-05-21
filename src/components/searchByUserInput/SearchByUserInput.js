@@ -6,7 +6,7 @@ function SearchByUserInput({meals}) {
 
     return (
         <div className={styles["search-result-container"]}>
-            {meals ? <h2>Search results:</h2> : <h1></h1>}
+            {meals ? <h2>Search results:</h2> : <h1> </h1>}
 
             {meals &&
             <>

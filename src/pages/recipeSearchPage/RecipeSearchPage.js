@@ -110,7 +110,7 @@ function RecipeSearchPage() {
                     onChange={() => onChangeRadioButtonHandler("origin")}
                 >
                     Search by origin (example: italian)
-                    {errorRadioButton && <p className={styles.error}>{errorRadioButton}</p>}
+                    {errorRadioButton && <p className={styles["error-radio"]}>{errorRadioButton}</p>}
                 </RadioButton>
 
                 <span className="searchbar">
@@ -124,7 +124,7 @@ function RecipeSearchPage() {
                     placeholder="Search for a recipe"
 
                 />
-                    {errorInputField && <p className={styles.error}>{errorInputField}</p>}
+                    {errorInputField && <p className={styles["error-input-field"]}>{errorInputField}</p>}
 
                     <article className={styles["search-button"]}>
                         <Button
