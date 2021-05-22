@@ -94,9 +94,9 @@ function SignUpPage() {
                     {registerSucces === true &&
                     <p>The registration succeeded. You'll be transferred to the login page</p>}
                 </form>
-                <p className={styles["navigation-register-help"]}>If you already have an account please go to <Link
+                <p className={styles["navigation-register-help"]}>If you already have an account please go to the <Link
                     to="/signin">Sign
-                    In.</Link></p>
+                    In</Link> page.</p>
                 {errorMessage && <span>Something went wrong with your registration, please try again later.</span>}
             </article>
         </div>

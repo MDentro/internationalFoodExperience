@@ -57,6 +57,7 @@ img.resize {
 
 .instruction-title-container {
     max-width: 500px;
+    text-align: center;
 }
 
 .recipe-tags {
@@ -84,6 +85,10 @@ img.resize {
 }
 
 @media screen and (min-width: 1295px) {
+
+    .instruction-title-container {
+       text-align: start;
+    }
 
     img.resize {
         margin: 20px;
