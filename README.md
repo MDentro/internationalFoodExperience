@@ -20,7 +20,7 @@ is mobile friendly so the user can search even in the supermarket.
 ![recipe-page](src/assets/screenshot-recipe-page.JPG)
 
 
-##Installation Manual
+## Installation Manual
 
 ### Installing the application
 Step 1: Download the application.\
