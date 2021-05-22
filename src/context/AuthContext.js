@@ -43,15 +43,19 @@ function AuthContextProvider({children}) {
     }
 
     useEffect(() => {
+        let mounted = true;
         const token = localStorage.getItem("token");
         if(token !== null && authState.user === null) {
-            fetchUserData(token);
+            if(mounted) {
+                fetchUserData(token);
+            }
         } else {
             setAuthState({
                 user: null,
                 status: "done",
             })
         }
+        return () => mounted = false;
     },[]);
 
     async function login(jwtToken) {
