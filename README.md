@@ -1,7 +1,7 @@
 # Getting Started with the International food experience application
 
 
-![home-page](src/assets/screenshot-home-page .JPG)
+![home-page](src/assets/screenshot-home-page%20.JPG)
 
 
 ## Introduction
