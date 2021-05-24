@@ -5,7 +5,7 @@ import {AuthContext} from "../../context/AuthContext";
 
 function HomePage() {
     // const { automaticSignOut } = useContext(AuthContext);
-    // automaticSignOut());
+    // automaticSignOut();
 
     return (
         <div className={styles.container}>

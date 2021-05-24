@@ -27,12 +27,14 @@ function SignUpPage() {
             console.log(result)
             toggleRegisterSucces(true);
             setTimeout(() => {
-                history.push("/signin");
+                 history.push("/signin");
             }, 2000);
 
         } catch (e) {
             console.error(e)
             toggleErrorMessage(true);
+            console.log(e.message)
+            console.log("json", e.body)
         }
     }
 
@@ -97,7 +99,7 @@ function SignUpPage() {
                 <p className={styles["navigation-register-help"]}>If you already have an account please go to the <Link
                     to="/signin">Sign
                     In</Link> page.</p>
-                {errorMessage && <span>Something went wrong with your registration, please try again later.</span>}
+                {errorMessage && <span className={styles.error}>Something went wrong with your registration, please try again later.</span>}
             </article>
         </div>
     );

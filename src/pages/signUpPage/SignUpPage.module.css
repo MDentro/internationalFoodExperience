@@ -16,4 +16,5 @@
 
 .error {
     composes: error from "../../constants/Constants.erros.module.css";
+    margin-left: -5px;
 }

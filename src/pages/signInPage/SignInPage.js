@@ -68,7 +68,7 @@ function SignInPage() {
                 <p className={styles["navigation-register-help"]}>If you haven't got an account yet please go to the <Link
                     to="/signup">Sign
                     up</Link> page.</p>
-                {errorMessage && <span>Something went wrong with logging you in, please try again later.</span>}
+                {errorMessage && <span className={styles.error}>Something went wrong with logging you in, please try again later.</span>}
                 {loading && <span>Loading...</span>}
             </article>
         </div>

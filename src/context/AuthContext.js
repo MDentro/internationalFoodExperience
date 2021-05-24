@@ -13,14 +13,38 @@ function AuthContextProvider({children}) {
         status: "pending",
     });
     //TODO
-    //  let [exp, setExp] = useState("");
-    //  const exp = "";
+    //  const [exp, setExp] = useState("");
+    // const exp = "";
+
+
+    // function fetchAuthUserData(jwtToken) {
+    //     const decoded = jwt_decode(jwtToken);
+    //     console.log("dit is een test")
+    //     const expiredToken = decoded.exp * 1000;
+    //
+    //     console.log(expiredToken);
+    //     const now = new Date();
+    //     const epochTimeNow = now.getTime();
+    //     console.log("wordt dit geprint voor if statement", "time", epochTimeNow, "expired", expiredToken);
+    //     if (epochTimeNow > expiredToken) {
+    //         console.log("wordt dit geprint in if statement", "time", epochTimeNow, "expired", expiredToken);
+    //         localStorage.clear();
+    //         setAuthState({
+    //             user: null,
+    //             status: "done",
+    //         })
+    //     }
+    //     else {
+    //         fetchUserData(jwtToken);
+    //     }
+    // }
 
     async function fetchUserData(jwtToken, exp) {
         const decoded = jwt_decode(jwtToken);
         const userId = decoded.sub;
-        // exp = decoded.exp;
+        // setExp(decoded.exp);
         // console.log(exp);
+        // console.log(jwtToken);
 
         try {
             const result = await axios.get(buildUserApiEndpoint(false, false, true), {
@@ -43,20 +67,16 @@ function AuthContextProvider({children}) {
     }
 
     useEffect(() => {
-        let mounted = true;
         const token = localStorage.getItem("token");
-        if(token !== null && authState.user === null) {
-            if(mounted) {
-                fetchUserData(token);
-            }
+        if (token !== null && authState.user === null) {
+            fetchUserData(token);
         } else {
             setAuthState({
                 user: null,
                 status: "done",
             })
         }
-        return () => mounted = false;
-    },[]);
+    }, []);
 
     async function login(jwtToken) {
         localStorage.setItem("token", jwtToken);
@@ -66,7 +86,7 @@ function AuthContextProvider({children}) {
 
     function signOut() {
         localStorage.clear();
-        setAuthState ({
+        setAuthState({
             user: null,
             status: "done",
         })
@@ -74,22 +94,21 @@ function AuthContextProvider({children}) {
     }
 
 
-    //TODO
-    // function automaticSignOut(exp) {
+    // //TODO
+    // function automaticSignOut() {
     //     fetchUserData(exp)
     //     const now = new Date();
     //     const epochTimeNow = now.getTime();
     //     console.log("wat is dit", exp);
     //
-    //     if(epochTimeNow > exp) {
-    //         localStorage.clear();
-    //         setAuthState ({
-    //             user: null,
-    //             status: "done",
-    //         })
-    //     }
+    //     // if(epochTimeNow > exp) {
+    //     //     localStorage.clear();
+    //     //     setAuthState ({
+    //     //         user: null,
+    //     //         status: "done",
+    //     //     })
+    //     // }
     // }
-
 
 
     const data = {
@@ -101,12 +120,12 @@ function AuthContextProvider({children}) {
 
     return (
         <>
-        <AuthContext.Provider value={data}>
-            {authState.status === "done"
-                ? children
-                : <p>Loading...</p>
-            }
-        </AuthContext.Provider>
+            <AuthContext.Provider value={data}>
+                {authState.status === "done"
+                    ? children
+                    : <p>Loading...</p>
+                }
+            </AuthContext.Provider>
         </>
     );
 }
