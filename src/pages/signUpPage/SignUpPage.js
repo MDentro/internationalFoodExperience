@@ -94,7 +94,7 @@ function SignUpPage() {
                         </Button>
                     </section>
                     {registerSucces === true &&
-                    <p>The registration succeeded. You'll be transferred to the login page</p>}
+                    <p className={styles["succes-registration"]}>The registration succeeded. You'll be transferred to the login page</p>}
                 </form>
                 <p className={styles["navigation-register-help"]}>If you already have an account please go to the <Link
                     to="/signin">Sign

@@ -18,3 +18,7 @@
     composes: error from "../../constants/Constants.erros.module.css";
     margin-left: -5px;
 }
+
+.succes-registration {
+    padding-left: 10px;
+}
