@@ -83,11 +83,11 @@ function RecipeDetails({idMeal}) {
 
                     <section className={styles["instruction-title-container"]}>
                         <h4>Instructions</h4>
-                        <p className={styles["instruction-container"]}>{instruction.split("\r\n").map((instruction, index) => {
-                            return <span key={index}>
+                        <p className={styles["instruction-container"]}>{instruction && instruction.split("\r\n").map((instruction, index) => {
+                            return <p key={index}>
                         {instruction}
                                 <br/>
-                    </span>
+                    </p>
                         })}</p>
                     </section>
 
