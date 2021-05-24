@@ -1,19 +1,19 @@
 # Getting Started with the International food experience application
 
-
-![home-page](src/assets/screenshot-home-page%20.JPG)
+![home-page](src/assets/screenshot-home-page.JPG)
 
 
 ## Introduction
-Many people will ask themselves what they should eat today. This is where this application comes in. 
-After registration people can log into the application and start searching for a nice recipe. If the user needs some inspiration
+Many people will ask themselves what they should eat today. This is why this application is useful.
+After registration people can log in and start searching for a nice recipe. If the user needs some inspiration
 they can choose for a rondom recipe. If the user doesn't like the random recipe they can press the button and get another.
 
 ![random-recipe-serach-page](src/assets/screenshot-random-recipe-search-page.JPG)
 
 There is also a search option for people that are looking for something more specific. Choose for category or origin and browse
-through the possibilities. When the choice is made it is time to start or go shopping first. Or shop ride awary because it 
-is mobile friendly so the user can search even in the supermarket.
+through the possibilities. When the choice is made it is time to start cooking or go shopping. 
+
+The application is mobile friendly, so it is also possible to search for a recipe in the supermarket.
 
 ![search-page-with-result](src/assets/screenshot-search-page-with-result.JPG)
 
@@ -34,17 +34,18 @@ Step 2: React should automatically open the application on http://localhost:3000
 Run `npm test` in the terminal of you text editor.
 
 
-## Registration
-In order to acces the application you need to register. Please fill in a 
-* Username: Example: Marian
-* Email: Example: marian@gmail.com
-* Password: Example: Marian100
+## Sign Up
+In order to acces the application the user needs to register. Please fill in:
+* Username: example: Marian
+* Email: example: marian@gmail.com
+* Password: example: Marian100
 
-![sign-up-page](src/assets/screenshot-sign-up.JPG)
+![sign-up-page](src/assets/screenshot-sign-up-page.JPG)
+
 
 ## Sign In
-After registration the user will be transfered to the Sign In Page. Please fill in:
-* Username: Example: Marian
-* Password: Example: Marian100
+After registration the user will be transferred to the Sign In Page. Please fill in:
+* Username: example: Marian
+* Password: example: Marian100
 
-![sign-in-page](src/assets/screenshot-sign-in.JPG)
+![sign-in-page](src/assets/screenshot-sign-in-page.JPG)
