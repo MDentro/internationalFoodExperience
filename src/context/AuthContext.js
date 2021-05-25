@@ -13,28 +13,8 @@ function AuthContextProvider({children}) {
         status: "pending",
     });
 
-// //TODO
-//     function tokenValidation(token, tokenExpired) {
-//         const now = new Date();
-//         const epochTimeNow = now.getTime();
-//         if (epochTimeNow > tokenExpired * 1000) {
-//             localStorage.clear();
-//             setAuthState ({
-//                 user: null,
-//                 status: "done",
-//             })
-//         }
-//     }
-//     //
-
 
     async function fetchUserData(jwtToken) {
-        // const decoded = jwt_decode(jwtToken);
-        // const userId = decoded.sub;
-        // const exp = decoded.exp;
-        // console.log(exp);
-        // console.log(jwtToken);
-
         try {
             const result = await axios.get(buildUserApiEndpoint(false, false, true), {
                 headers: {
@@ -57,16 +37,19 @@ function AuthContextProvider({children}) {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        const tokenExpires = localStorage.getItem("tokenExpires");
         const now = new Date();
         const epochTimeNow = now.getTime()
 
-        if (epochTimeNow > tokenExpires * 1000) {
-            localStorage.clear();
-            setAuthState({
-                user: null,
-                status: "done",
-            })
+        if (token !== null && authState.user === null) {
+            const decoded = jwt_decode(token);
+            const tokenExpires = decoded.exp;
+            if (epochTimeNow > tokenExpires * 1000) {
+                localStorage.clear();
+                setAuthState({
+                    user: null,
+                    status: "done",
+                })
+            }
         } else if (token !== null && authState.user === null) {
             fetchUserData(token);
         } else {
@@ -78,11 +61,8 @@ function AuthContextProvider({children}) {
     }, []);
 
     async function login(jwtToken) {
-        const decoded = jwt_decode(jwtToken);
-        const exp = decoded.exp;
-
         localStorage.setItem("token", jwtToken);
-        localStorage.setItem("tokenExpires", exp);
+
         fetchUserData(jwtToken);
         history.push("/search");
     }
