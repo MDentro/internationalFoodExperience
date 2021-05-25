@@ -43,15 +43,15 @@ function AuthContextProvider({children}) {
         if (token !== null && authState.user === null) {
             const decoded = jwt_decode(token);
             const tokenExpires = decoded.exp;
-            if (epochTimeNow > tokenExpires * 1000) {
+            if (epochTimeNow < tokenExpires * 1000) {
+                fetchUserData(token);
+            } else if (epochTimeNow > tokenExpires * 1000) {
                 localStorage.clear();
                 setAuthState({
                     user: null,
                     status: "done",
                 })
             }
-        } else if (token !== null && authState.user === null) {
-            fetchUserData(token);
         } else {
             setAuthState({
                 user: null,
