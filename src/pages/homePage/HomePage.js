@@ -1,11 +1,9 @@
-import React, {useContext} from "react";
+import React from "react";
 import DisplayCategory from "../../components/displayCategory/DisplayCategory";
 import styles from "../homePage/HomePage.module.css";
-import {AuthContext} from "../../context/AuthContext";
+
 
 function HomePage() {
-    // const { automaticSignOut } = useContext(AuthContext);
-    // automaticSignOut();
 
     return (
         <div className={styles.container}>

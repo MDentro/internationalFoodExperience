@@ -7,6 +7,7 @@ import {AuthContext} from "../../context/AuthContext";
 import buildUserApiEndpoint from "../../helpers/buildUserApiEndpoint";
 import Button from "../../components/buttons/button/Button";
 import styles from "./SignInPage.module.css";
+import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
 
 function SignInPage() {
     const [errorMessage, toggleErrorMessage] = useState(false);
@@ -22,7 +23,6 @@ function SignInPage() {
         try {
             const result = await axios.post(buildUserApiEndpoint(true, false, false), data);
             console.log(result);
-            console.log(result.data.accessToken);
             login(result.data.accessToken);
         } catch (e) {
             console.error(e)
@@ -65,11 +65,13 @@ function SignInPage() {
                         </Button>
                     </section>
                 </form>
-                <p className={styles["navigation-register-help"]}>If you haven't got an account yet please go to the <Link
-                    to="/signup">Sign
-                    up</Link> page.</p>
-                {errorMessage && <span className={styles.error}>Something went wrong with logging you in, please try again later.</span>}
-                {loading && <span>Loading...</span>}
+                <p className={styles["navigation-register-help"]}>If you haven't got an account yet please go to
+                    the <Link
+                        to="/signup">Sign
+                        up</Link> page.</p>
+                {errorMessage &&
+                <span className={styles.error}>Something went wrong with logging you in, please try again later.</span>}
+                {loading && <LoadingIcon className={styles.loading}/>}
             </article>
         </div>
     );

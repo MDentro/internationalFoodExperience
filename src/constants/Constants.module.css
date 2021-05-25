@@ -1,9 +1,0 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: calc(100vh - 70px);;
-    flex-basis: 100vw;
-    padding: 40px;
-}

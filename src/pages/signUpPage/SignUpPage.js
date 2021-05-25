@@ -33,7 +33,7 @@ function SignUpPage() {
         } catch (e) {
             console.error(e)
             toggleErrorMessage(true);
-            console.log(e.message)
+            console.log(e)
             console.log("json", e.body)
         }
     }
@@ -55,8 +55,7 @@ function SignUpPage() {
                         />
                         {errors.username &&
                         <p className={styles.error}>Username is required and should have a minimum of six characters
-                            with only
-                            letters and numbers.</p>}
+                            with only letters and numbers.</p>}
                     </section>
 
                     <section>

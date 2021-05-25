@@ -1,5 +1,5 @@
 .container {
-    composes: container from "../../constants/Constants.module.css";
+    composes: container from "../../constants/Constants.user.registration.module.css";
 }
 
 .form-container-user {
@@ -17,4 +17,9 @@
 .error {
     composes: error from "../../constants/Constants.erros.module.css";
     margin-left: -5px;
+}
+
+.loading {
+    composes: loading from "../../constants/Constants.loading.module.css";
+    margin-left: 200px;
 }

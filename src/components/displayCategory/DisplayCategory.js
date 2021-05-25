@@ -3,6 +3,7 @@ import axios from "axios";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 import CategoryCard from "../categoryCard/CategoryCard";
 import styles from "./DisplayCategory.module.css";
+import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
 
 function DisplayCategory() {
     const [vegetarianNameCategory, setVegetarianNameCategory] = useState("");
@@ -101,7 +102,7 @@ function DisplayCategory() {
             </>}
             {errorMessage &&
             <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
-            {loading && <span>Loading...</span>}
+            {loading && <LoadingIcon className={styles.loading}/>}
         </div>
     );
 }

@@ -41,6 +41,10 @@ h2 {
     margin-left: -20px;
 }
 
+.loading {
+    composes: loading from "../../constants/Constants.loading.module.css";
+}
+
 
 
 @media screen and (min-width: 768px) {

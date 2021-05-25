@@ -12,37 +12,26 @@ function AuthContextProvider({children}) {
         user: null,
         status: "pending",
     });
-    //TODO
-    //  const [exp, setExp] = useState("");
-    // const exp = "";
+
+// //TODO
+//     function tokenValidation(token, tokenExpired) {
+//         const now = new Date();
+//         const epochTimeNow = now.getTime();
+//         if (epochTimeNow > tokenExpired * 1000) {
+//             localStorage.clear();
+//             setAuthState ({
+//                 user: null,
+//                 status: "done",
+//             })
+//         }
+//     }
+//     //
 
 
-    // function fetchAuthUserData(jwtToken) {
-    //     const decoded = jwt_decode(jwtToken);
-    //     console.log("dit is een test")
-    //     const expiredToken = decoded.exp * 1000;
-    //
-    //     console.log(expiredToken);
-    //     const now = new Date();
-    //     const epochTimeNow = now.getTime();
-    //     console.log("wordt dit geprint voor if statement", "time", epochTimeNow, "expired", expiredToken);
-    //     if (epochTimeNow > expiredToken) {
-    //         console.log("wordt dit geprint in if statement", "time", epochTimeNow, "expired", expiredToken);
-    //         localStorage.clear();
-    //         setAuthState({
-    //             user: null,
-    //             status: "done",
-    //         })
-    //     }
-    //     else {
-    //         fetchUserData(jwtToken);
-    //     }
-    // }
-
-    async function fetchUserData(jwtToken, exp) {
-        const decoded = jwt_decode(jwtToken);
-        const userId = decoded.sub;
-        // setExp(decoded.exp);
+    async function fetchUserData(jwtToken) {
+        // const decoded = jwt_decode(jwtToken);
+        // const userId = decoded.sub;
+        // const exp = decoded.exp;
         // console.log(exp);
         // console.log(jwtToken);
 
@@ -68,7 +57,17 @@ function AuthContextProvider({children}) {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        if (token !== null && authState.user === null) {
+        const tokenExpires = localStorage.getItem("tokenExpires");
+        const now = new Date();
+        const epochTimeNow = now.getTime()
+
+        if (epochTimeNow > tokenExpires * 1000) {
+            localStorage.clear();
+            setAuthState({
+                user: null,
+                status: "done",
+            })
+        } else if (token !== null && authState.user === null) {
             fetchUserData(token);
         } else {
             setAuthState({
@@ -79,7 +78,11 @@ function AuthContextProvider({children}) {
     }, []);
 
     async function login(jwtToken) {
+        const decoded = jwt_decode(jwtToken);
+        const exp = decoded.exp;
+
         localStorage.setItem("token", jwtToken);
+        localStorage.setItem("tokenExpires", exp);
         fetchUserData(jwtToken);
         history.push("/search");
     }
@@ -94,28 +97,10 @@ function AuthContextProvider({children}) {
     }
 
 
-    // //TODO
-    // function automaticSignOut() {
-    //     fetchUserData(exp)
-    //     const now = new Date();
-    //     const epochTimeNow = now.getTime();
-    //     console.log("wat is dit", exp);
-    //
-    //     // if(epochTimeNow > exp) {
-    //     //     localStorage.clear();
-    //     //     setAuthState ({
-    //     //         user: null,
-    //     //         status: "done",
-    //     //     })
-    //     // }
-    // }
-
-
     const data = {
         ...authState,
         login: login,
         signOut: signOut,
-        // automaticSignOut: automaticSignOut,
     }
 
     return (

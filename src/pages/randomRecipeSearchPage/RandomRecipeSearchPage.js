@@ -4,6 +4,7 @@ import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 import FunctionalButton from "../../components/buttons/functionalButton/FunctionalButton"
 import styles from "./RandomRecipeSearchPage.module.css"
+import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
 
 function RandomRecipeSearchPage() {
     const [idMeal, setIdMeal] = useState("");
@@ -63,7 +64,7 @@ function RandomRecipeSearchPage() {
             }
             {errorMessage &&
             <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
-            {loading && <span>Loading...</span>}
+            {loading && <LoadingIcon className={styles.loading}/>}
         </div>
     );
 }

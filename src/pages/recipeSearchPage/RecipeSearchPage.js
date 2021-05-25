@@ -8,6 +8,7 @@ import RadioButton from "../../components/buttons/radioButton/RadioButton";
 import {AuthContext} from "../../context/AuthContext"
 import styles from "./RecipeSearchPage.module.css";
 import SearchBar from "../../components/searchBar/SearchBar";
+import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
 
 
 function RecipeSearchPage() {
@@ -145,7 +146,7 @@ function RecipeSearchPage() {
             )}
             {errorMessage &&
             <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
-            {loading && <span>Loading...</span>}
+            {loading && <LoadingIcon className={styles.loading}/>}
         </div>
     );
 }

@@ -4,6 +4,7 @@ import createIngredientsArray from "../../helpers/createIngredientsArray";
 import createMeasuresArray from "../../helpers/createMeasuresArray";
 import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
 import styles from "./RecipeDetails.module.css";
+import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
 
 
 function RecipeDetails({idMeal}) {
@@ -83,12 +84,12 @@ function RecipeDetails({idMeal}) {
 
                     <section className={styles["instruction-title-container"]}>
                         <h4>Instructions</h4>
-                        <p className={styles["instruction-container"]}>{instruction && instruction.split("\r\n").map((instruction, index) => {
+                        <div className={styles["instruction-container"]}>{instruction && instruction.split("\r\n").map((instruction, index) => {
                             return <p key={index}>
                         {instruction}
                                 <br/>
                     </p>
-                        })}</p>
+                        })}</div>
                     </section>
 
                 </article>
@@ -96,6 +97,7 @@ function RecipeDetails({idMeal}) {
             }
             {errorMessage &&
             <span className={styles.error}>Something went wrong with fetching the data, please try again later.</span>}
+            {loading && <LoadingIcon className={styles.loading}/>}
         </div>
     );
 }

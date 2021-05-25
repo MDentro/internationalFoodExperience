@@ -1,5 +1,8 @@
 .container {
-    composes: container from "../../constants/Constants.module.css";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .introduction-text {
@@ -13,6 +16,7 @@
 
 h1 {
     font-size: 30px;
+    margin-top: 50px
 }
 
 h4 {
