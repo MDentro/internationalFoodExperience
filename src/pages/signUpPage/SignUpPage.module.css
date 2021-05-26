@@ -16,7 +16,7 @@
 
 .error {
     composes: error from "../../constants/Constants.erros.module.css";
-    margin-left: -5px;
+    margin-left: -1px;
 }
 
 .succes-registration {

@@ -8,7 +8,7 @@ import Button from "../../components/buttons/button/Button";
 import styles from "./SignUpPage.module.css";
 
 function SignUpPage() {
-    const [errorMessage, toggleErrorMessage] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const [registerSucces, toggleRegisterSucces] = useState(false);
     const history = useHistory();
 
@@ -16,7 +16,7 @@ function SignUpPage() {
 
     async function onSubmit(data) {
         console.log(data);
-        toggleErrorMessage(false);
+        setErrorMessage("");
         try {
             const result = await axios.post(buildUserApiEndpoint(false, true, false), {
                 email: data.email,
@@ -31,8 +31,9 @@ function SignUpPage() {
             }, 2000);
 
         } catch (e) {
-            console.error(e)
-            toggleErrorMessage(true);
+            console.error(e.response.data.message)
+            const error = e.response.data.message
+            setErrorMessage(error.substring(7));
         }
     }
 
@@ -83,6 +84,9 @@ function SignUpPage() {
                             with at
                             least one uppercase letter, one lowercase letter and one number.</p>}
                     </section>
+
+                    {errorMessage && <span className={styles.error}>{errorMessage}</span>}
+
                     <section className={styles["align-button"]}>
                         <Button
                             type="submit"
@@ -92,11 +96,10 @@ function SignUpPage() {
                     </section>
                     {registerSucces === true &&
                     <p className={styles["succes-registration"]}>The registration succeeded. You'll be transferred to the login page</p>}
+
                 </form>
                 <p className={styles["navigation-register-help"]}>If you already have an account please go to the <Link
-                    to="/signin">Sign
-                    In</Link> page.</p>
-                {errorMessage && <span className={styles.error}>Something went wrong with your registration, please try again later.</span>}
+                    to="/signin">Sign In</Link> page.</p>
             </article>
         </div>
     );

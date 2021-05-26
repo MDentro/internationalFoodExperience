@@ -1,5 +1,5 @@
 import React, {useContext, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import InputField from "../../components/inputField/InputField";
 import {useForm} from "react-hook-form";
 import axios from "axios";
@@ -12,7 +12,7 @@ import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
 function SignInPage() {
     const [errorMessage, toggleErrorMessage] = useState(false);
     const [loading, toggleLoading] = useState(false);
-    const {login} = useContext(AuthContext);
+    const {login, user} = useContext(AuthContext);
     const {handleSubmit, register, formState: {errors}} = useForm()
 
     async function onSubmit(data) {
@@ -28,6 +28,10 @@ function SignInPage() {
             toggleErrorMessage(true)
         }
         toggleLoading(false);
+    }
+
+    if(user) {
+        return <Redirect to="/search"/>
     }
 
     return (
