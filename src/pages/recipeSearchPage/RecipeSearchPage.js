@@ -121,7 +121,7 @@ function RecipeSearchPage() {
                     id="recipe-search=bar"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
-                    onKeyUp={keyPressCheck}
+                    onKeyDown={keyPressCheck}
                     placeholder="Search for a recipe"
 
                 />

@@ -33,8 +33,6 @@ function SignUpPage() {
         } catch (e) {
             console.error(e)
             toggleErrorMessage(true);
-            console.log(e)
-            console.log("json", e.body)
         }
     }
 

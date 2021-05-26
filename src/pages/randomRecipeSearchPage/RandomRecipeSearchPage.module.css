@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding: 10px;
 }
 
 .random-introduction-container {
@@ -19,6 +20,7 @@
     max-width: 1150px;
     text-align: end;
     padding-top: 10px;
+    margin-right: 10px;
 }
 
 .error {

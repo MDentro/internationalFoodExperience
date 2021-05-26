@@ -15,7 +15,6 @@ function SignInPage() {
     const {login} = useContext(AuthContext);
     const {handleSubmit, register, formState: {errors}} = useForm()
 
-
     async function onSubmit(data) {
         console.log(data);
         toggleErrorMessage(false);
@@ -26,7 +25,7 @@ function SignInPage() {
             login(result.data.accessToken);
         } catch (e) {
             console.error(e)
-            toggleErrorMessage(true);
+            toggleErrorMessage(true)
         }
         toggleLoading(false);
     }
