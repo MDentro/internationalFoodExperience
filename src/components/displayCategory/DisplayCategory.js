@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import buildRecipeUrlEndpoint from "../../helpers/buildRecipeUrlEndpoint";
 import CategoryCard from "../categoryCard/CategoryCard";
 import styles from "./DisplayCategory.module.css";
 import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
@@ -26,7 +26,7 @@ function DisplayCategory() {
             toggleErrorMessage(false);
             toggleLoading(true);
             try {
-                const {data: {categories}} = await axios.get(buildRecipeApiEndpoint("categoryList", null, null, null))
+                const {data: {categories}} = await axios.get(buildRecipeUrlEndpoint("categoryList", null, null, null))
                 setVegetarianCategoryImage(categories[11].strCategoryThumb);
                 setVegetarianNameCategory(categories[11].strCategory);
                 setPastaCategoryImage(categories[5].strCategoryThumb);

@@ -2,7 +2,7 @@ import React, {createContext, useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-import buildUserApiEndpoint from "../helpers/buildUserApiEndpoint";
+import buildUserUrlEndpoint from "../helpers/buildUserUrlEndpoint";
 
 export const AuthContext = createContext({});
 
@@ -16,7 +16,7 @@ function AuthContextProvider({children}) {
 
     async function fetchUserData(jwtToken) {
         try {
-            const result = await axios.get(buildUserApiEndpoint(false, false, true), {
+            const result = await axios.get(buildUserUrlEndpoint(false, false, true), {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${jwtToken}`,

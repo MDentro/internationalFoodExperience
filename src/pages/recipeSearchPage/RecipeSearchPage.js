@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import SearchByUserInput from "../../components/searchByUserInput/SearchByUserInput";
-import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import buildRecipeUrlEndpoint from "../../helpers/buildRecipeUrlEndpoint";
 import axios from "axios";
 import DisplayExistingSearchOptions from "../../components/displayExistingSearchOptions/DisplayExistingSearchOptions";
 import Button from "../../components/buttons/button/Button";
@@ -68,7 +68,7 @@ function RecipeSearchPage() {
         } else if (!searchInput) {
             setErrorInputField("Search input is obligated.");
         } else {
-            setEndpoint(buildRecipeApiEndpoint("search", searchBy, searchInput, null));
+            setEndpoint(buildRecipeUrlEndpoint("search", searchBy, searchInput, null));
             setSearchInput("");
             setErrorInputField("");
         }

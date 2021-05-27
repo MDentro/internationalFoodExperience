@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import InputField from "../../components/inputField/InputField";
 import {Link, useHistory} from "react-router-dom";
 import axios from "axios";
-import buildUserApiEndpoint from "../../helpers/buildUserApiEndpoint";
+import buildUserUrlEndpoint from "../../helpers/buildUserUrlEndpoint";
 import Button from "../../components/buttons/button/Button";
 import styles from "./SignUpPage.module.css";
 
@@ -15,24 +15,21 @@ function SignUpPage() {
     const {handleSubmit, register, formState: {errors}} = useForm();
 
     async function onSubmit(data) {
-        console.log(data);
         setErrorMessage("");
         try {
-            const result = await axios.post(buildUserApiEndpoint(false, true, false), {
+            const result = await axios.post(buildUserUrlEndpoint(false, true, false), {
                 email: data.email,
                 password: data.password,
                 username: data.username,
                 role: ["user"]
             });
-            console.log(result)
             toggleRegisterSucces(true);
             setTimeout(() => {
                  history.push("/signin");
             }, 2000);
 
         } catch (e) {
-            console.error(e.response.data.message)
-            const error = e.response.data.message
+            const error = e.response.data.message;
             setErrorMessage(error.substring(7));
         }
     }

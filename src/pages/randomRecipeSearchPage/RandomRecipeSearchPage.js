@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import RecipeDetails from "../../components/recipeDetails/RecipeDetails";
-import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import buildRecipeUrlEndpoint from "../../helpers/buildRecipeUrlEndpoint";
 import FunctionalButton from "../../components/buttons/functionalButton/FunctionalButton"
 import styles from "./RandomRecipeSearchPage.module.css"
 import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
@@ -17,7 +17,7 @@ function RandomRecipeSearchPage() {
             toggleErrorMessage(false);
             toggleLoading(true);
             try {
-                const {data: {meals}} = await axios.get(buildRecipeApiEndpoint("random", null, null, null));
+                const {data: {meals}} = await axios.get(buildRecipeUrlEndpoint("random", null, null, null));
                 setIdMeal(meals[0].idMeal);
             } catch (e) {
                 console.error(e);

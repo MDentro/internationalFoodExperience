@@ -1,4 +1,4 @@
-function buildUserApiEndpoint(signIn, signUp, requestUser) {
+function buildUserUrlEndpoint(signIn, signUp, requestUser) {
     const baseUrl = `https://polar-lake-14365.herokuapp.com`
 
     let endpoint = "";
@@ -17,4 +17,4 @@ function buildUserApiEndpoint(signIn, signUp, requestUser) {
     return endpoint;
 }
 
-export default buildUserApiEndpoint;
+export default buildUserUrlEndpoint;

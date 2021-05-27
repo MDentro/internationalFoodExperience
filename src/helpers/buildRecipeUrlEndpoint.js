@@ -1,4 +1,4 @@
-function buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal) {
+function buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal) {
     const baseUrl = `https://www.themealdb.com/api/json/v1/1`
 
     let endpoint = "";
@@ -28,4 +28,4 @@ function buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal) {
     return endpoint;
 }
 
-export default buildRecipeApiEndpoint;
+export default buildRecipeUrlEndpoint;

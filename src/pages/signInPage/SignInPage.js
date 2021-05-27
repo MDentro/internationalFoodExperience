@@ -4,7 +4,7 @@ import InputField from "../../components/inputField/InputField";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
-import buildUserApiEndpoint from "../../helpers/buildUserApiEndpoint";
+import buildUserUrlEndpoint from "../../helpers/buildUserUrlEndpoint";
 import Button from "../../components/buttons/button/Button";
 import styles from "./SignInPage.module.css";
 import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
@@ -16,12 +16,10 @@ function SignInPage() {
     const {handleSubmit, register, formState: {errors}} = useForm()
 
     async function onSubmit(data) {
-        console.log(data);
         toggleErrorMessage(false);
         toggleLoading(true);
         try {
-            const result = await axios.post(buildUserApiEndpoint(true, false, false), data);
-            console.log(result);
+            const result = await axios.post(buildUserUrlEndpoint(true, false, false), data);
             login(result.data.accessToken);
         } catch (e) {
             console.error(e)

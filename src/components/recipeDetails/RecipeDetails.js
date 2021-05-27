@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import createIngredientsArray from "../../helpers/createIngredientsArray";
 import createMeasuresArray from "../../helpers/createMeasuresArray";
-import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import buildRecipeUrlEndpoint from "../../helpers/buildRecipeUrlEndpoint";
 import styles from "./RecipeDetails.module.css";
 import {ReactComponent as LoadingIcon} from "../../assets/spinner.svg";
 
@@ -23,7 +23,7 @@ function RecipeDetails({idMeal}) {
             toggleErrorMessage(false);
             toggleLoading(true);
             try {
-                const {data: {meals}} = await axios.get(buildRecipeApiEndpoint("selectedRecipe", null, null, idMeal));
+                const {data: {meals}} = await axios.get(buildRecipeUrlEndpoint("selectedRecipe", null, null, idMeal));
                 setName(meals[0].strMeal);
                 setCategory(meals[0].strCategory);
                 setOrigin(meals[0].strArea);

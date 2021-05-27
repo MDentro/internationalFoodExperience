@@ -1,4 +1,4 @@
-import buildRecipeApiEndpoint from "../../helpers/buildRecipeApiEndpoint";
+import buildRecipeUrlEndpoint from "../../helpers/buildRecipeUrlEndpoint";
 
 test ("return vegan url when inputting apiType search and searchBy category and searchInput vegan is given and id null",  () => {
     const apiType = "search";
@@ -6,7 +6,7 @@ test ("return vegan url when inputting apiType search and searchBy category and 
     const searchInput = "vegan";
     const idMeal = null;
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         `https://www.themealdb.com/api/json/v1/1/filter.php?c=vegan`
@@ -20,7 +20,7 @@ test ("return errorMessage when inputting apiType search, searchBy and id are nu
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -34,7 +34,7 @@ test ("return errorMessage when inputting apiType search and searchBy and id wit
     const idMeal = "1234";
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -47,7 +47,7 @@ test ("return vegan url when inputting apiType search and searchBy origin and se
     const searchInput = "dutch";
     const idMeal = null;
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         `https://www.themealdb.com/api/json/v1/1/filter.php?a=dutch`
@@ -61,7 +61,7 @@ test ("return errorMessage when inputting apiType search, searchBy and id are nu
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -75,7 +75,7 @@ test ("return errorMessage when inputting apiType search and searchBy and id wit
     const idMeal = "1234";
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -89,7 +89,7 @@ test ("return random url when inputting apiType random and searchBy null and sea
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         `https://www.themealdb.com/api/json/v1/1/random.php`
@@ -103,7 +103,7 @@ test ("return errorMessage when apiType random isn't given", () => {
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -117,7 +117,7 @@ test ("return errorMessage at apiType random when searchBy is not null", () => {
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -131,7 +131,7 @@ test ("return errorMessage at apiType rondom when searchInput is not null", () =
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -145,7 +145,7 @@ test ("return errorMessage at apiType random when id is not null, searchBy and s
     const idMeal = "1234";
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -159,7 +159,7 @@ test ("return categoryList url when inputting apiType is categoryList and search
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         `https://www.themealdb.com/api/json/v1/1/categories.php`
@@ -173,7 +173,7 @@ test ("return errorMessage when apiType categoryList is not given", () => {
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -187,7 +187,7 @@ test ("return errorMessage at apiType categoryList when searchBy is not null", (
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -201,7 +201,7 @@ test ("return errorMessage at apiType categoryList when searchInput is not null"
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -217,7 +217,7 @@ test ("return errorMessage at apiType categoryList when id is not null, searchBy
     const idMeal = "1234";
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -232,7 +232,7 @@ test ("return originList url when inputting apiType random and searchBy null and
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
@@ -246,7 +246,7 @@ test ("return errorMessage when apiType originList isn't given", () => {
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -260,7 +260,7 @@ test ("return errorMessage at apiType originList when searchBy is not null", () 
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -274,7 +274,7 @@ test ("return errorMessage at apiType originList when searchInput is not null", 
     const idMeal = null;
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
@@ -288,7 +288,7 @@ test ("return errorMessage at apiType originList when id is not null, searchBy a
     const idMeal = "1234";
 
 
-    const result = buildRecipeApiEndpoint(apiType, searchBy, searchInput, idMeal);
+    const result = buildRecipeUrlEndpoint(apiType, searchBy, searchInput, idMeal);
 
     expect(result).toEqual(
         "Something went wrong with connecting to the right url."
