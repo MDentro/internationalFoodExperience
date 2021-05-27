@@ -3,6 +3,17 @@
 ![home-page](src/assets/screenshot-home-page.JPG)
 
 
+## Table of content
+* Introduction
+* Necessities
+* Installation Manual
+    - Installing the application
+    - Running the application
+    - Running tests
+* Sign Up
+* Sign In
+
+
 ## Introduction
 Many people will ask themselves what they should eat today. This is why this application is useful.
 After registration people can log in and start searching for a nice recipe. If the user needs some inspiration
@@ -18,6 +29,13 @@ The application is mobile friendly, so it is also possible to search for a recip
 ![search-page-with-result](src/assets/screenshot-search-page-with-result.JPG)
 
 ![recipe-page](src/assets/screenshot-recipe-page.JPG)
+
+
+## Necessities
+* Text editor to run the application
+* Git in order to acces the repository
+* Internet connection  
+* No API key needed
 
 
 ## Installation Manual

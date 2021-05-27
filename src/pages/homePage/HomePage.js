@@ -8,7 +8,7 @@ function HomePage() {
     return (
         <div className={styles.container}>
             <article className={styles["introduction-text"]}>
-                <h1>Welcome to the international food experience website</h1>
+                <h1>Welcome to International Food Experience </h1>
                 <h4>After logging in you can search for nice recipes from all over the world</h4>
                 <h2>Enjoy!</h2>
             </article>

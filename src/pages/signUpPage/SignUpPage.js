@@ -29,6 +29,7 @@ function SignUpPage() {
             }, 2000);
 
         } catch (e) {
+            console.error(e)
             const error = e.response.data.message;
             setErrorMessage(error.substring(7));
         }
