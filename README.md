@@ -1,4 +1,4 @@
-# Getting Started with the International food experience application
+# Getting Started with the International Food Experience application
 
 ![home-page](src/assets/screenshot-home-page.JPG)
 
