@@ -1,6 +1,4 @@
 .loading {
-    width: 20px;
-    height: 20px;
     animation: spinner 2s linear infinite;
     text-align: center;
 }

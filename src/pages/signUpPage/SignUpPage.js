@@ -25,13 +25,12 @@ function SignUpPage() {
             });
             toggleRegisterSucces(true);
             setTimeout(() => {
-                 history.push("/signin");
+                history.push("/signin");
             }, 2000);
 
         } catch (e) {
-            console.error(e)
             const error = e.response.data.message;
-            setErrorMessage(error.substring(7));
+            setErrorMessage(error.substring(7, error.length - 1) + ".");
         }
     }
 
@@ -93,7 +92,8 @@ function SignUpPage() {
                         </Button>
                     </section>
                     {registerSucces === true &&
-                    <p className={styles["succes-registration"]}>The registration succeeded. You'll be transferred to the login page</p>}
+                    <p className={styles["succes-registration"]}>The registration succeeded. You'll be transferred to
+                        the login page</p>}
 
                 </form>
                 <p className={styles["navigation-register-help"]}>If you already have an account please go to the <Link

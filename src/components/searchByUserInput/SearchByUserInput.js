@@ -12,7 +12,6 @@ function SearchByUserInput({meals}) {
             <>
                 <div>
                     {meals.map((meal) => {
-
                         return <DisplayFoundResult
                             key={meal.idMeal}
                             image={meal.strMealThumb}

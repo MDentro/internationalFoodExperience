@@ -44,7 +44,6 @@ function RecipeSearchPage() {
                 }
 
             } catch (e) {
-                console.error(e);
                 toggleErrorMessage(true);
             }
             toggleLoading(false);

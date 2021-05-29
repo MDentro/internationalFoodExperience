@@ -19,7 +19,6 @@ function DisplayExistingSearchOptions({searchBy}) {
                     const {data: {categories}} = await axios.get(buildRecipeUrlEndpoint("categoryList", null, null, null))
                     setExistingCategories(categories);
                 } catch (e) {
-                    console.error(e);
                     toggleErrorMessage(true);
                 }
             }
@@ -29,7 +28,6 @@ function DisplayExistingSearchOptions({searchBy}) {
                     const {data: {meals}} = await axios.get(buildRecipeUrlEndpoint("originList", null, null, null))
                     setExistingOrigins(meals);
                 } catch (e) {
-                    console.error(e);
                     toggleErrorMessage(true);
                 }
             }

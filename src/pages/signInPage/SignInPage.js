@@ -22,13 +22,12 @@ function SignInPage() {
             const result = await axios.post(buildUserUrlEndpoint(true, false, false), data);
             login(result.data.accessToken);
         } catch (e) {
-            console.error(e)
             toggleErrorMessage(true)
         }
         toggleLoading(false);
     }
 
-    if(user) {
+    if (user) {
         return <Redirect to="/search"/>
     }
 
@@ -58,6 +57,7 @@ function SignInPage() {
                         />
                         {errors.password && <p className={styles.error}>Password is required</p>}
                     </section>
+
                     <section className={styles["align-button"]}>
                         <Button
                             type="submit"
@@ -68,8 +68,7 @@ function SignInPage() {
                 </form>
                 <p className={styles["navigation-register-help"]}>If you haven't got an account yet please go to
                     the <Link
-                        to="/signup">Sign
-                        up</Link> page.</p>
+                        to="/signup">Sign up</Link> page.</p>
                 {errorMessage &&
                 <span className={styles.error}>Something went wrong with logging you in, please try again later.</span>}
                 {loading && <LoadingIcon className={styles.loading}/>}

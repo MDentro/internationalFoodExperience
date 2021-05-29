@@ -24,8 +24,8 @@
 }
 
 .error {
-    composes: error from "../../constants/Constants.erros.module.css"
-}
+    composes: error from "../../constants/Constants.erros.module.css";
+ }
 
 .loading {
     composes: loading from "../../constants/Constants.loading.module.css";

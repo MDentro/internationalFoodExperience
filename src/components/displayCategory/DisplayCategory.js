@@ -40,7 +40,6 @@ function DisplayCategory() {
                 setMiscellaneousCategoryImage(categories[4].strCategoryThumb);
                 setMiscellaneousNameCategory(categories[4].strCategory);
             } catch (e) {
-                console.error(e);
                 toggleErrorMessage(true);
             }
             toggleLoading(false);

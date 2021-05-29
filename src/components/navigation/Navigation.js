@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import React, {useContext} from "react";
+import {NavLink, useHistory} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 import FunctionalButton from "../buttons/functionalButton/FunctionalButton";
 import styles from "./Navigation.module.css"
 
 function Navigation() {
     const history = useHistory();
-    const { signOut, user } = useContext(AuthContext);
+    const {signOut, user} = useContext(AuthContext);
 
     return (
         <nav>

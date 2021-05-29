@@ -32,7 +32,6 @@ function RecipeDetails({idMeal}) {
                 setMeasures(createMeasuresArray(meals[0]));
                 setInstruction(meals[0].strInstructions);
             } catch (e) {
-                console.error(e);
                 toggleErrorMessage(true);
             }
             toggleLoading(false);
@@ -84,11 +83,12 @@ function RecipeDetails({idMeal}) {
 
                     <section className={styles["instruction-title-container"]}>
                         <h4>Instructions</h4>
-                        <div className={styles["instruction-container"]}>{instruction && instruction.split("\r\n").map((instruction, index) => {
+                        <div
+                            className={styles["instruction-container"]}>{instruction && instruction.split("\r\n").map((instruction, index) => {
                             return <p key={index}>
-                        {instruction}
+                                {instruction}
                                 <br/>
-                    </p>
+                            </p>
                         })}</div>
                     </section>
 

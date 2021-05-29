@@ -14,7 +14,7 @@ function RadioButton({label, type = "radio", id, name, onChange, children}) {
                 name={name}
                 onChange={onChange}
             />
-            {children}
+                {children}
         </label>
     );
 }

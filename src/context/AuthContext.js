@@ -45,7 +45,7 @@ function AuthContextProvider({children}) {
             const tokenExpires = decoded.exp;
             if (epochTimeNow < tokenExpires * 1000) {
                 fetchUserData(token);
-            } else if (epochTimeNow > tokenExpires * 1000) {
+            } else if (epochTimeNow >= tokenExpires * 1000) {
                 localStorage.clear();
                 setAuthState({
                     user: null,
@@ -62,7 +62,6 @@ function AuthContextProvider({children}) {
 
     async function login(jwtToken) {
         localStorage.setItem("token", jwtToken);
-
         await fetchUserData(jwtToken);
     }
 

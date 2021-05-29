@@ -20,7 +20,6 @@ function RandomRecipeSearchPage() {
                 const {data: {meals}} = await axios.get(buildRecipeUrlEndpoint("random", null, null, null));
                 setIdMeal(meals[0].idMeal);
             } catch (e) {
-                console.error(e);
                 toggleErrorMessage(true);
             }
             toggleLoading(false);

@@ -32,7 +32,7 @@ The application is mobile friendly, so it is also possible to search for a recip
 
 
 ## Necessities
-* Text editor to run the application
+* Code editor to run the application
 * Git in order to acces the repository
 * Internet connection  
 * No API key needed
@@ -42,14 +42,14 @@ The application is mobile friendly, so it is also possible to search for a recip
 
 ### Installing the application
 Step 1: Download the application.\
-Step 2: Run `npm install` in the terminal of you text editor.
+Step 2: Run `npm install` in the terminal of you code editor.
 
 ### Running the application
 Step 1: Run `npm start` to start the application in the development mode.\
 Step 2: React should automatically open the application on http://localhost:3000/. If it doesn't work please go to your browser and insert the url manually.
 
 ### Running tests
-Run `npm test` in the terminal of you text editor.
+Run `npm test` in the terminal of you code editor.
 
 
 ## Sign Up
