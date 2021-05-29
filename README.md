@@ -55,7 +55,7 @@ Run `npm test` in the terminal of you code editor.
 ## Sign Up
 In order to acces the application the user needs to register. Please fill in:
 * Username: example: Marian
-* Email: example: marian@gmail.com
+* Email: example: marian@yourdomain.com
 * Password: example: Marian100
 
 ![sign-up-page](src/assets/screenshot-sign-up-page.JPG)
